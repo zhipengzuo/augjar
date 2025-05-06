@@ -1,0 +1,173 @@
+syntax = "proto3";
+
+package com.augmentcode.rpc;
+
+// This package contains proto version of settings WebView messages defined in webview-messages.ts.
+
+// Add these options to generate Java classes
+option java_multiple_files = true;
+option java_package = "com.augmentcode.rpc";
+option java_outer_classname = "SettingsTypes";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/descriptor.proto";
+import "google/protobuf/struct.proto";
+
+import "augment.proto";
+import "tools.proto";
+import "intellij-chat.proto";
+
+/*
+ * This service defines an abstraction of an interface that the settings web view can use.
+ * Web views send messages via JS objects which we parse as JSONs into the proto buffers.
+ * Until web views are not using HTTP as transport protocol, routing of the JS messages
+ * into the service calls below is managed by AugmentMessagingServiceImpl.
+ */
+service WebviewSettingsService {
+  rpc ToolConfigLoaded(ToolConfigLoadedRequest) returns (ToolConfigInitializeResponse) {}
+  rpc ToolConfigGetDefinitions(ToolConfigGetDefinitionsRequest) returns (ToolConfigDefinitionsResponse) {}
+  rpc ToolConfigSave(ToolConfigSaveRequest) returns (google.protobuf.Empty) {}
+  rpc ToolConfigStartOAuth(ToolConfigStartOAuthRequest) returns (ToolConfigStartOAuthResponse) {}
+  rpc ToolConfigRevokeAccess(ToolConfigRevokeAccessRequest) returns (ToolConfigDefinitionsResponse) {}
+  rpc GetStoredMCPServers(GetStoredMCPServersRequest) returns (GetStoredMCPServersResponse) {}
+  rpc SetStoredMCPServers(SetStoredMCPServersRequest) returns (google.protobuf.Empty) {}
+  rpc ExecuteInitialOrientation(ExecuteInitialOrientationRequest) returns (google.protobuf.Empty) {}
+  rpc UpdateUserGuidelines(UpdateUserGuidelinesRequest) returns (google.protobuf.Empty) {}
+}
+
+message ToolConfigLoadedRequest {
+  option (webview_message_type) = "tool-config-loaded";
+}
+
+message ToolConfigInitializeResponse {
+  option (webview_message_type) = "tool-config-initialize";
+  SettingsInitializeResponseData data = 1;
+}
+
+message SettingsComponentSupported {
+  bool workspaceContext = 1;
+  bool mcpServerList = 2;
+  bool orientation = 3;
+  bool remoteTools = 4;
+  bool userGuidelines = 5;
+  bool mcpServerImport = 6;
+  bool terminal = 7;
+}
+
+message SettingsInitializeResponseData {
+  repeated ToolSettings toolConfigs = 1;
+  repeated com.augmentcode.sidecar.rpc.tools.ToolDefinitionWithSettings hostTools = 2;
+  bool enableDebugFeatures = 3;
+  bool enableAgentMode = 4;
+  SettingsComponentSupported settingsComponentSupported = 5;
+  GuidelinesStates guidelines = 6;
+  bool enableInitialOrientation = 7;
+}
+
+message ToolSettings {
+  string config = 1;
+  bool isConfigured = 2;
+  string name = 3;
+}
+
+enum ToolSafety {
+  UNSAFE = 0;
+  SAFE = 1;
+  CHECK = 2;
+}
+
+message ToolConfigGetDefinitionsRequest {
+  option (webview_message_type) = "tool-config-get-definitions";
+  ToolConfigGetDefinitionsRequestData data = 1;
+}
+
+message ToolConfigGetDefinitionsRequestData {
+  bool useCache = 1;
+}
+
+message ToolConfigDefinitionsResponse {
+  option (webview_message_type) = "tool-config-definitions-response";
+  ToolConfigDefinitionsResponseData data = 1;
+}
+
+message ToolConfigDefinitionsResponseData {
+  repeated com.augmentcode.sidecar.rpc.tools.ToolDefinitionWithSettings hostTools = 1;
+}
+
+message ToolConfigSaveRequest {
+  option (webview_message_type) = "tool-config-save";
+  ToolConfigSaveRequestData data = 1;
+}
+
+message ToolConfigSaveRequestData {
+  string toolConfig = 1;
+  bool isConfigured = 2;
+  string toolName = 3;
+}
+
+message ToolConfigStartOAuthRequest {
+  option (webview_message_type) = "tool-config-start-oauth";
+  ToolConfigStartOAuthRequestData data = 1;
+}
+
+message ToolConfigStartOAuthRequestData {
+  string authUrl = 1;
+}
+
+message ToolConfigStartOAuthResponse {
+  option (webview_message_type) = "tool-config-start-oauth-response";
+  ToolConfigStartOAuthResponseData data = 1;
+}
+
+message ToolConfigStartOAuthResponseData {
+  bool ok = 1;
+}
+
+message ToolConfigRevokeAccessRequest {
+  option (webview_message_type) = "tool-config-revoke-access";
+  ToolConfigRevokeAccessRequestData data = 1;
+}
+
+message ToolConfigRevokeAccessRequestData {
+  com.augmentcode.sidecar.rpc.tools.ToolIdentifier toolId = 1;
+}
+
+message GetStoredMCPServersRequest {
+  option (webview_message_type) = "get-stored-mcp-servers";
+}
+
+message GetStoredMCPServersResponse {
+  option (webview_message_type) = "get-stored-mcp-servers-response";
+  repeated MCPServer data = 1;
+}
+
+message SetStoredMCPServersRequest {
+  option (webview_message_type) = "set-stored-mcp-servers";
+  repeated MCPServer data = 1;
+}
+
+message MCPServer {
+  string id = 1;
+  string name = 2;
+  string command = 3;
+  string arguments = 4;
+  bool useShellInterpolation = 5;
+  map<string, string> env = 6;
+}
+
+message ExecuteInitialOrientationRequest {
+  option (webview_message_type) = "execute-initial-orientation";
+}
+
+message NavigateToSettingsSectionRequest {
+  option (webview_message_type) = "navigate-to-settings-section";
+  string data = 1;
+}
+
+// guidelines related messages
+message UpdateUserGuidelinesRequest {
+  option (webview_message_type) = "update-user-guidelines";
+  string data = 1;
+}
+
+// Guidelines related messages are imported from intellij-chat.proto

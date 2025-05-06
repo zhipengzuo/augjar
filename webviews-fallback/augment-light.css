@@ -1,0 +1,1221 @@
+:root {
+  --intellij-actionButton-focusedBorderColor: rgba(98, 184, 222, 1);
+  --intellij-actionButton-hoverBackground: rgba(223, 223, 223, 1);
+  --intellij-actionButton-hoverBorderColor: rgba(223, 223, 223, 1);
+  --intellij-actionButton-hoverSeparatorColor: rgba(176, 176, 176, 1);
+  --intellij-actionButton-pressedBackground: rgba(209, 209, 209, 1);
+  --intellij-actionButton-pressedBorderColor: rgba(209, 209, 209, 1);
+  --intellij-activeCaption: rgba(67, 78, 96, 1);
+  --intellij-activeCaptionBorder: rgba(255, 255, 255, 1);
+  --intellij-activeCaptionText: rgba(0, 0, 0, 1);
+  --intellij-appInspector-graphNode-background: rgba(253, 253, 253, 1);
+  --intellij-bigSpinner-background: rgba(242, 242, 242, 1);
+  --intellij-bookmark-iconBackground: rgba(247, 199, 119, 1);
+  --intellij-bookmark-mnemonic-iconBackground: rgba(254, 247, 236, 1);
+  --intellij-bookmark-mnemonic-iconBorderColor: rgba(244, 175, 61, 1);
+  --intellij-bookmark-mnemonic-iconForeground: rgba(0, 0, 0, 1);
+  --intellij-bookmarkMnemonicAssigned-background: rgba(247, 199, 119, 1);
+  --intellij-bookmarkMnemonicAssigned-borderColor: rgba(247, 199, 119, 1);
+  --intellij-bookmarkMnemonicAssigned-foreground: rgba(0, 0, 0, 1);
+  --intellij-bookmarkMnemonicAvailable-background: rgba(255, 255, 255, 1);
+  --intellij-bookmarkMnemonicAvailable-borderColor: rgba(196, 196, 196, 1);
+  --intellij-bookmarkMnemonicAvailable-foreground: rgba(0, 0, 0, 1);
+  --intellij-bookmarkMnemonicCurrent-background: rgba(56, 159, 214, 1);
+  --intellij-bookmarkMnemonicCurrent-borderColor: rgba(56, 159, 214, 1);
+  --intellij-bookmarkMnemonicCurrent-foreground: rgba(255, 255, 255, 1);
+  --intellij-borders-color: rgba(209, 209, 209, 1);
+  --intellij-borders-contrastBorderColor: rgba(209, 209, 209, 1);
+  --intellij-button-background: rgba(242, 242, 242, 1);
+  --intellij-button-darcula-disabledText-shadow: rgba(255, 255, 255, 1);
+  --intellij-button-darkShadow: rgba(0, 0, 0, 1);
+  --intellij-button-default-endBackground: rgba(73, 137, 204, 1);
+  --intellij-button-default-endBorderColor: rgba(52, 109, 173, 1);
+  --intellij-button-default-focusColor: rgba(67, 104, 140, 1);
+  --intellij-button-default-focusedBorderColor: rgba(169, 201, 245, 1);
+  --intellij-button-default-foreground: rgba(255, 255, 255, 1);
+  --intellij-button-default-shadowColor: rgba(166, 166, 166, 0);
+  --intellij-button-default-startBackground: rgba(82, 140, 199, 1);
+  --intellij-button-default-startBorderColor: rgba(72, 126, 184, 1);
+  --intellij-button-disabledBorderColor: rgba(209, 209, 209, 1);
+  --intellij-button-disabledText: rgba(140, 140, 140, 1);
+  --intellij-button-endBackground: rgba(255, 255, 255, 1);
+  --intellij-button-endBorderColor: rgba(196, 196, 196, 1);
+  --intellij-button-focusedBorderColor: rgba(135, 175, 218, 1);
+  --intellij-button-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-button-font-size: 13px;
+  --intellij-button-foreground: rgba(0, 0, 0, 1);
+  --intellij-button-highlight: rgba(255, 255, 255, 1);
+  --intellij-button-light: rgba(8, 74, 217, 1);
+  --intellij-button-select: rgba(255, 102, 102, 1);
+  --intellij-button-shadow: rgba(0, 0, 0, 0.27);
+  --intellij-button-shadowColor: rgba(166, 166, 166, 0);
+  --intellij-button-startBackground: rgba(255, 255, 255, 1);
+  --intellij-button-startBorderColor: rgba(196, 196, 196, 1);
+  --intellij-canvas-tooltip-background: rgba(247, 247, 247, 1);
+  --intellij-checkBox-background: rgba(242, 242, 242, 1);
+  --intellij-checkBox-disabledText: rgba(140, 140, 140, 1);
+  --intellij-checkBox-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-checkBox-font-size: 13px;
+  --intellij-checkBox-foreground: rgba(0, 0, 0, 1);
+  --intellij-checkBox-select: rgba(255, 102, 102, 1);
+  --intellij-checkBoxMenuItem-acceleratorFont-family: "Lucida Grande", system-ui,
+    sans-serif;
+  --intellij-checkBoxMenuItem-acceleratorFont-size: 14px;
+  --intellij-checkBoxMenuItem-acceleratorForeground: rgba(0, 0, 0, 1);
+  --intellij-checkBoxMenuItem-acceleratorSelectionForeground: rgba(
+    255,
+    255,
+    255,
+    1
+  );
+  --intellij-checkBoxMenuItem-background: rgba(242, 242, 242, 1);
+  --intellij-checkBoxMenuItem-disabledBackground: rgba(255, 255, 255, 1);
+  --intellij-checkBoxMenuItem-disabledForeground: rgba(140, 140, 140, 1);
+  --intellij-checkBoxMenuItem-font-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-checkBoxMenuItem-font-size: 13px;
+  --intellij-checkBoxMenuItem-foreground: rgba(0, 0, 0, 1);
+  --intellij-checkBoxMenuItem-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-checkBoxMenuItem-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-code-block-borderColor: rgba(235, 236, 240, 1);
+  --intellij-code-block-editorPane-background: rgba(242, 242, 242, 1);
+  --intellij-code-block-editorPane-backgroundColor: rgba(90, 93, 107, 1);
+  --intellij-code-block-editorPane-borderColor: rgba(235, 236, 240, 1);
+  --intellij-code-inline-backgroundColor: rgba(90, 93, 107, 1);
+  --intellij-codeWithMe-accessDisabled-accessDot: rgba(219, 88, 96, 1);
+  --intellij-codeWithMe-accessEnabled-accessDot: rgba(89, 168, 105, 1);
+  --intellij-codeWithMe-accessEnabled-dropdownBorder: rgba(217, 217, 217, 1);
+  --intellij-codeWithMe-accessEnabled-pillBackground: rgba(217, 217, 217, 1);
+  --intellij-codeWithMe-avatar-foreground: rgba(29, 29, 29, 1);
+  --intellij-colorChooser-background: rgba(242, 242, 242, 1);
+  --intellij-colorChooser-font-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-colorChooser-font-size: 13px;
+  --intellij-colorChooser-foreground: rgba(0, 0, 0, 1);
+  --intellij-colorChooser-swatchesDefaultRecentColor: rgba(255, 255, 255, 1);
+  --intellij-colorPalette-black: rgba(0, 0, 0, 1);
+  --intellij-colorPalette-border: rgba(209, 209, 209, 1);
+  --intellij-colorPalette-componentBorder: rgba(196, 196, 196, 1);
+  --intellij-colorPalette-contentBackground: rgba(255, 255, 255, 1);
+  --intellij-colorPalette-disabledForeground: rgba(140, 140, 140, 1);
+  --intellij-colorPalette-foreground: rgba(0, 0, 0, 1);
+  --intellij-colorPalette-grey01: rgba(110, 110, 110, 1);
+  --intellij-colorPalette-grey02: rgba(128, 128, 128, 1);
+  --intellij-colorPalette-grey03: rgba(140, 140, 140, 1);
+  --intellij-colorPalette-grey04: rgba(153, 153, 153, 1);
+  --intellij-colorPalette-grey05: rgba(171, 171, 171, 1);
+  --intellij-colorPalette-grey06: rgba(176, 176, 176, 1);
+  --intellij-colorPalette-grey07: rgba(189, 189, 189, 1);
+  --intellij-colorPalette-grey08: rgba(196, 196, 196, 1);
+  --intellij-colorPalette-grey09: rgba(209, 209, 209, 1);
+  --intellij-colorPalette-grey10: rgba(213, 213, 213, 1);
+  --intellij-colorPalette-grey11: rgba(217, 217, 217, 1);
+  --intellij-colorPalette-grey12: rgba(223, 223, 223, 1);
+  --intellij-colorPalette-grey13: rgba(230, 230, 230, 1);
+  --intellij-colorPalette-grey14: rgba(235, 235, 235, 1);
+  --intellij-colorPalette-grey15: rgba(242, 242, 242, 1);
+  --intellij-colorPalette-grey16: rgba(245, 245, 245, 1);
+  --intellij-colorPalette-grey17: rgba(247, 247, 247, 1);
+  --intellij-colorPalette-grey18: rgba(250, 250, 250, 1);
+  --intellij-colorPalette-infoPanelForeground: rgba(128, 128, 128, 1);
+  --intellij-colorPalette-lightBorder: rgba(217, 217, 217, 1);
+  --intellij-colorPalette-linkForeground: rgba(36, 112, 179, 1);
+  --intellij-colorPalette-panel: rgba(242, 242, 242, 1);
+  --intellij-colorPalette-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-colorPalette-separatorForeground: rgba(153, 153, 153, 1);
+  --intellij-colorPalette-white: rgba(255, 255, 255, 1);
+  --intellij-comboBox-arrowButton-background: rgba(250, 250, 250, 1);
+  --intellij-comboBox-arrowButton-disabledIconColor: rgba(171, 171, 171, 1);
+  --intellij-comboBox-arrowButton-iconColor: rgba(110, 110, 110, 1);
+  --intellij-comboBox-arrowButton-nonEditableBackground: rgba(255, 255, 255, 1);
+  --intellij-comboBox-background: rgba(255, 255, 255, 1);
+  --intellij-comboBox-buttonBackground: rgba(255, 255, 255, 1);
+  --intellij-comboBox-buttonDarkShadow: rgba(0, 0, 0, 1);
+  --intellij-comboBox-buttonHighlight: rgba(255, 255, 255, 1);
+  --intellij-comboBox-buttonShadow: rgba(0, 0, 0, 0.27);
+  --intellij-comboBox-disabledBackground: rgba(242, 242, 242, 1);
+  --intellij-comboBox-disabledForeground: rgba(140, 140, 140, 1);
+  --intellij-comboBox-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-comboBox-font-size: 13px;
+  --intellij-comboBox-foreground: rgba(0, 0, 0, 1);
+  --intellij-comboBox-modifiedItemForeground: rgba(0, 90, 217, 1);
+  --intellij-comboBox-nonEditableBackground: rgba(255, 255, 255, 1);
+  --intellij-comboBox-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-comboBox-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-comboBoxButton-background: rgba(255, 255, 255, 1);
+  --intellij-completionPopup-advertiser-background: rgba(242, 242, 242, 1);
+  --intellij-completionPopup-advertiser-foreground: rgba(128, 128, 128, 1);
+  --intellij-completionPopup-background: rgba(235, 244, 254, 1);
+  --intellij-completionPopup-foreground: rgba(0, 0, 0, 1);
+  --intellij-completionPopup-matchForeground: rgba(36, 112, 179, 1);
+  --intellij-completionPopup-selectionBackground: rgba(197, 223, 252, 1);
+  --intellij-completionPopup-selectionInactiveBackground: rgba(
+    223,
+    223,
+    223,
+    1
+  );
+  --intellij-complexPopup-header-background: rgba(255, 255, 255, 1);
+  --intellij-component-borderColor: rgba(196, 196, 196, 1);
+  --intellij-component-disabledBorderColor: rgba(209, 209, 209, 1);
+  --intellij-component-errorFocusColor: rgba(229, 62, 77, 1);
+  --intellij-component-focusColor: rgba(151, 195, 243, 1);
+  --intellij-component-focusedBorderColor: rgba(135, 175, 218, 1);
+  --intellij-component-hoverIconColor: rgba(127, 139, 145, 0.9);
+  --intellij-component-iconColor: rgba(127, 139, 145, 0.5);
+  --intellij-component-inactiveErrorFocusColor: rgba(235, 188, 188, 1);
+  --intellij-component-inactiveWarningFocusColor: rgba(255, 211, 133, 1);
+  --intellij-component-infoForeground: rgba(153, 153, 153, 1);
+  --intellij-component-warningFocusColor: rgba(226, 165, 58, 1);
+  --intellij-content-background: rgba(255, 255, 255, 1);
+  --intellij-control: rgba(223, 223, 223, 1);
+  --intellij-controlDkShadow: rgba(0, 0, 0, 1);
+  --intellij-controlHighlight: rgba(8, 74, 217, 1);
+  --intellij-controlLtHighlight: rgba(255, 255, 255, 1);
+  --intellij-controlShadow: rgba(0, 0, 0, 0.27);
+  --intellij-controlText: rgba(187, 187, 187, 1);
+  --intellij-counter-background: rgba(154, 167, 176, 0.8);
+  --intellij-counter-foreground: rgba(255, 255, 255, 1);
+  --intellij-debugger-evaluateExpression-background: rgba(255, 255, 255, 1);
+  --intellij-debugger-variables-changedValueForeground: rgba(0, 0, 255, 1);
+  --intellij-debugger-variables-collectingDataForeground: rgba(
+    153,
+    153,
+    153,
+    1
+  );
+  --intellij-debugger-variables-errorMessageForeground: rgba(255, 0, 0, 1);
+  --intellij-debugger-variables-evaluatingExpressionForeground: rgba(
+    153,
+    153,
+    153,
+    1
+  );
+  --intellij-debugger-variables-exceptionForeground: rgba(255, 0, 0, 1);
+  --intellij-debugger-variables-modifyingValueForeground: rgba(0, 0, 255, 1);
+  --intellij-debugger-variables-valueForeground: rgba(128, 0, 0, 1);
+  --intellij-defaultTabs-background: rgba(242, 242, 242, 1);
+  --intellij-defaultTabs-borderColor: rgba(209, 209, 209, 1);
+  --intellij-defaultTabs-hoverBackground: rgba(0, 0, 0, 0.098);
+  --intellij-defaultTabs-inactiveColoredTabBackground: rgba(0, 0, 0, 0.067);
+  --intellij-defaultTabs-inactiveUnderlineColor: rgba(156, 167, 184, 1);
+  --intellij-defaultTabs-underlineColor: rgba(64, 131, 201, 1);
+  --intellij-defaultTabs-underlinedTabForeground: rgba(0, 0, 0, 1);
+  --intellij-desktop: rgba(34, 255, 6, 1);
+  --intellij-desktop-background: rgba(242, 242, 242, 1);
+  --intellij-desktopIcon-borderColor: rgba(0, 0, 0, 0.6);
+  --intellij-desktopIcon-borderRimColor: rgba(192, 192, 192, 0.75);
+  --intellij-desktopIcon-labelBackground: rgba(0, 0, 0, 0.39);
+  --intellij-dragAndDrop-areaBackground: rgba(61, 125, 204, 0.2);
+  --intellij-dragAndDrop-areaBorderColor: rgba(138, 178, 222, 1);
+  --intellij-dragAndDrop-areaForeground: rgba(128, 128, 128, 1);
+  --intellij-dragAndDrop-borderColor: rgba(38, 117, 191, 1);
+  --intellij-dragAndDrop-rowBackground: rgba(38, 117, 191, 0.15);
+  --intellij-editor-background: rgba(209, 209, 209, 1);
+  --intellij-editor-foreground: rgba(128, 128, 128, 1);
+  --intellij-editor-searchField-background: rgba(255, 255, 255, 1);
+  --intellij-editor-shortcutForeground: rgba(66, 116, 166, 1);
+  --intellij-editor-toolTip-background: rgba(247, 247, 247, 1);
+  --intellij-editor-toolTip-foreground: rgba(0, 0, 0, 1);
+  --intellij-editorPane-background: rgba(255, 255, 255, 1);
+  --intellij-editorPane-caretForeground: rgba(0, 0, 0, 1);
+  --intellij-editorPane-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-editorPane-font-size: 13px;
+  --intellij-editorPane-foreground: rgba(0, 0, 0, 1);
+  --intellij-editorPane-inactiveBackground: rgba(255, 255, 255, 1);
+  --intellij-editorPane-inactiveForeground: rgba(140, 140, 140, 1);
+  --intellij-editorPane-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-editorPane-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-editorTabs-background: rgba(242, 242, 242, 1);
+  --intellij-editorTabs-borderColor: rgba(209, 209, 209, 1);
+  --intellij-editorTabs-hoverBackground: rgba(0, 0, 0, 0.098);
+  --intellij-editorTabs-inactiveColoredFileBackground: rgba(0, 0, 0, 0.067);
+  --intellij-editorTabs-inactiveMaskColor: rgba(38, 38, 38, 0.2);
+  --intellij-editorTabs-inactiveUnderlineColor: rgba(156, 167, 184, 1);
+  --intellij-editorTabs-underlineColor: rgba(64, 131, 201, 1);
+  --intellij-editorTabs-underlinedTabBackground: rgba(255, 255, 255, 1);
+  --intellij-editorTabs-underlinedTabForeground: rgba(0, 0, 0, 1);
+  --intellij-fileColor-blue: rgba(234, 246, 255, 1);
+  --intellij-fileColor-green: rgba(239, 250, 231, 1);
+  --intellij-fileColor-orange: rgba(246, 233, 220, 1);
+  --intellij-fileColor-rose: rgba(242, 220, 218, 1);
+  --intellij-fileColor-violet: rgba(230, 224, 241, 1);
+  --intellij-fileColor-yellow: rgba(255, 255, 228, 1);
+  --intellij-flameGraph-tooltip-foreground: rgba(0, 0, 0, 1);
+  --intellij-flameGraph-tooltip-scaleBackground: rgba(235, 235, 235, 1);
+  --intellij-flameGraph-tooltip-scaleColor: rgba(167, 209, 236, 1);
+  --intellij-focus-color: rgba(255, 0, 0, 1);
+  --intellij-formattedTextField-background: rgba(255, 255, 255, 1);
+  --intellij-formattedTextField-caretForeground: rgba(0, 0, 0, 1);
+  --intellij-formattedTextField-font-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-formattedTextField-font-size: 13px;
+  --intellij-formattedTextField-foreground: rgba(0, 0, 0, 1);
+  --intellij-formattedTextField-inactiveBackground: rgba(255, 255, 255, 1);
+  --intellij-formattedTextField-inactiveForeground: rgba(140, 140, 140, 1);
+  --intellij-formattedTextField-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-formattedTextField-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-gotItTooltip-background: rgba(247, 247, 247, 1);
+  --intellij-gotItTooltip-borderColor: rgba(171, 171, 171, 1);
+  --intellij-gotItTooltip-button-foreground: rgba(0, 0, 0, 1);
+  --intellij-gotItTooltip-codeBackground: rgba(76, 80, 82, 1);
+  --intellij-gotItTooltip-codeBorderColor: rgba(196, 196, 196, 1);
+  --intellij-gotItTooltip-foreground: rgba(0, 0, 0, 1);
+  --intellij-gotItTooltip-header-foreground: rgba(0, 0, 0, 1);
+  --intellij-gotItTooltip-imageBorderColor: rgba(255, 255, 255, 0.3);
+  --intellij-gotItTooltip-linkForeground: rgba(36, 112, 179, 1);
+  --intellij-gotItTooltip-shortcutForeground: rgba(0, 0, 0, 1);
+  --intellij-group-disabledSeparatorColor: rgba(209, 209, 209, 1);
+  --intellij-group-separatorColor: rgba(209, 209, 209, 1);
+  --intellij-gutterTooltip-infoForeground: rgba(128, 128, 128, 1);
+  --intellij-gutterTooltip-lineSeparatorColor: rgba(223, 223, 223, 1);
+  --intellij-helpBrowser-aiEditor-background: rgba(250, 245, 255, 1);
+  --intellij-helpBrowser-helpBrowserMessage-snippet-moreLines-background: rgba(
+    242,
+    242,
+    242,
+    1
+  );
+  --intellij-helpBrowser-helpBrowserMessage-snippet-moreLines-foreground: rgba(
+    128,
+    128,
+    128,
+    1
+  );
+  --intellij-helpBrowser-userMessage-background: rgba(226, 230, 236, 1);
+  --intellij-helpBrowser-userMessage-snippet-moreLines-foreground: rgba(
+    128,
+    128,
+    128,
+    1
+  );
+  --intellij-hyperlink-linkColor: rgba(88, 157, 246, 1);
+  --intellij-iconButton-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-iconButton-font-size: 11px;
+  --intellij-ide-shadow-bottom0Color: rgba(255, 255, 255, 0);
+  --intellij-ide-shadow-bottom1Color: rgba(0, 0, 0, 0.063);
+  --intellij-ide-shadow-bottomLeft0Color: rgba(255, 255, 255, 0);
+  --intellij-ide-shadow-bottomLeft1Color: rgba(0, 0, 0, 0.063);
+  --intellij-ide-shadow-bottomRight0Color: rgba(255, 255, 255, 0);
+  --intellij-ide-shadow-bottomRight1Color: rgba(0, 0, 0, 0.063);
+  --intellij-ide-shadow-left0Color: rgba(255, 255, 255, 0);
+  --intellij-ide-shadow-left1Color: rgba(0, 0, 0, 0.063);
+  --intellij-ide-shadow-right0Color: rgba(255, 255, 255, 0);
+  --intellij-ide-shadow-right1Color: rgba(0, 0, 0, 0.063);
+  --intellij-ide-shadow-top0Color: rgba(255, 255, 255, 0);
+  --intellij-ide-shadow-top1Color: rgba(0, 0, 0, 0.063);
+  --intellij-ide-shadow-topLeft0Color: rgba(255, 255, 255, 0);
+  --intellij-ide-shadow-topLeft1Color: rgba(0, 0, 0, 0.063);
+  --intellij-ide-shadow-topRight0Color: rgba(255, 255, 255, 0);
+  --intellij-ide-shadow-topRight1Color: rgba(0, 0, 0, 0.063);
+  --intellij-inactiveCaption: rgba(57, 60, 61, 1);
+  --intellij-inactiveCaptionBorder: rgba(108, 108, 108, 1);
+  --intellij-inactiveCaptionText: rgba(108, 108, 108, 1);
+  --intellij-info: rgba(255, 255, 255, 1);
+  --intellij-infoText: rgba(0, 0, 0, 1);
+  --intellij-internalFrame-activeTitleBackground: rgba(238, 238, 238, 1);
+  --intellij-internalFrame-activeTitleForeground: rgba(0, 0, 0, 1);
+  --intellij-internalFrame-background: rgba(242, 242, 242, 1);
+  --intellij-internalFrame-borderColor: rgba(238, 238, 238, 1);
+  --intellij-internalFrame-borderDarkShadow: rgba(0, 255, 0, 1);
+  --intellij-internalFrame-borderHighlight: rgba(0, 0, 255, 1);
+  --intellij-internalFrame-borderLight: rgba(255, 255, 0, 1);
+  --intellij-internalFrame-borderShadow: rgba(255, 0, 0, 1);
+  --intellij-internalFrame-inactiveTitleBackground: rgba(238, 238, 238, 1);
+  --intellij-internalFrame-inactiveTitleForeground: rgba(128, 128, 128, 1);
+  --intellij-internalFrame-optionDialogBackground: rgba(238, 238, 238, 1);
+  --intellij-internalFrame-optionDialogTitleFont-family: ".AppleSystemUIFont",
+    system-ui, sans-serif;
+  --intellij-internalFrame-optionDialogTitleFont-size: 14px;
+  --intellij-internalFrame-paletteBackground: rgba(238, 238, 238, 1);
+  --intellij-internalFrame-paletteTitleFont-family: ".AppleSystemUIFont",
+    system-ui, sans-serif;
+  --intellij-internalFrame-paletteTitleFont-size: 14px;
+  --intellij-internalFrame-titleFont-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-internalFrame-titleFont-size: 14px;
+  --intellij-label-background: rgba(242, 242, 242, 1);
+  --intellij-label-disabledForeground: rgba(140, 140, 140, 1);
+  --intellij-label-disabledShadow: rgba(64, 64, 64, 1);
+  --intellij-label-disabledText: rgba(140, 140, 140, 1);
+  --intellij-label-errorForeground: rgba(199, 34, 45, 1);
+  --intellij-label-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-label-font-size: 13px;
+  --intellij-label-foreground: rgba(0, 0, 0, 1);
+  --intellij-label-infoForeground: rgba(128, 128, 128, 1);
+  --intellij-label-selectedDisabledForeground: rgba(140, 140, 140, 1);
+  --intellij-label-selectedForeground: rgba(0, 0, 0, 1);
+  --intellij-lesson-badge-newLessonBackground: rgba(98, 181, 67, 1);
+  --intellij-lesson-badge-newLessonForeground: rgba(255, 255, 255, 1);
+  --intellij-lesson-shortcutBackground: rgba(230, 238, 247, 1);
+  --intellij-lesson-stepNumberForeground: rgba(128, 128, 128, 1);
+  --intellij-lineProfiler-hotLine-foreground: rgba(199, 34, 45, 1);
+  --intellij-lineProfiler-hotLine-hoverBackground: rgba(255, 204, 204, 1);
+  --intellij-lineProfiler-hotLine-labelBackground: rgba(255, 224, 224, 1);
+  --intellij-lineProfiler-ignoredLine-foreground: rgba(176, 176, 176, 1);
+  --intellij-lineProfiler-ignoredLine-labelBackground: rgba(223, 223, 223, 1);
+  --intellij-lineProfiler-line-foreground: rgba(97, 103, 105, 1);
+  --intellij-lineProfiler-line-hoverBackground: rgba(209, 209, 209, 1);
+  --intellij-lineProfiler-line-labelBackground: rgba(223, 223, 223, 1);
+  --intellij-link-activeForeground: rgba(36, 112, 179, 1);
+  --intellij-link-background: rgba(255, 255, 255, 1);
+  --intellij-link-foreground: rgba(0, 0, 0, 1);
+  --intellij-link-hoverForeground: rgba(36, 112, 179, 1);
+  --intellij-link-pressedForeground: rgba(36, 112, 179, 1);
+  --intellij-link-secondaryForeground: rgba(119, 168, 217, 1);
+  --intellij-link-tag-background: rgba(242, 242, 242, 1);
+  --intellij-link-tag-foreground: rgba(0, 0, 0, 1);
+  --intellij-link-visitedForeground: rgba(36, 112, 179, 1);
+  --intellij-list-background: rgba(255, 255, 255, 1);
+  --intellij-list-dropLineColor: rgba(0, 0, 0, 0.27);
+  --intellij-list-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-list-font-size: 13px;
+  --intellij-list-foreground: rgba(0, 0, 0, 1);
+  --intellij-list-hoverBackground: rgba(237, 245, 252, 1);
+  --intellij-list-hoverInactiveBackground: rgba(245, 245, 245, 1);
+  --intellij-list-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-list-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-list-selectionInactiveBackground: rgba(213, 213, 213, 1);
+  --intellij-list-selectionInactiveForeground: rgba(0, 0, 0, 1);
+  --intellij-list-tag-background: rgba(235, 236, 240, 1);
+  --intellij-list-tag-foreground: rgba(73, 75, 87, 1);
+  --intellij-mainMenu-background: rgba(242, 242, 242, 1);
+  --intellij-mainMenu-foreground: rgba(0, 0, 0, 1);
+  --intellij-mainToolbar-background: rgba(242, 242, 242, 1);
+  --intellij-mainToolbar-dropdown-background: rgba(242, 242, 242, 1);
+  --intellij-mainToolbar-dropdown-hoverBackground: rgba(223, 223, 223, 1);
+  --intellij-mainToolbar-dropdown-pressedBackground: rgba(223, 223, 223, 1);
+  --intellij-mainToolbar-dropdown-transparentHoverBackground: rgba(
+    0,
+    0,
+    0,
+    0.1
+  );
+  --intellij-mainToolbar-foreground: rgba(0, 0, 0, 1);
+  --intellij-mainToolbar-icon-background: rgba(242, 242, 242, 1);
+  --intellij-mainToolbar-icon-hoverBackground: rgba(223, 223, 223, 1);
+  --intellij-mainToolbar-icon-pressedBackground: rgba(223, 223, 223, 1);
+  --intellij-mainWindow-fullScreeControl-background: rgba(122, 123, 128, 1);
+  --intellij-mainWindow-tab-background: rgba(223, 223, 223, 1);
+  --intellij-mainWindow-tab-borderColor: rgba(209, 209, 209, 1);
+  --intellij-mainWindow-tab-foreground: rgba(128, 128, 128, 1);
+  --intellij-mainWindow-tab-hoverBackground: rgba(230, 230, 230, 1);
+  --intellij-mainWindow-tab-hoverForeground: rgba(140, 140, 140, 1);
+  --intellij-mainWindow-tab-selectedBackground: rgba(242, 242, 242, 1);
+  --intellij-mainWindow-tab-selectedForeground: rgba(0, 0, 0, 1);
+  --intellij-mainWindow-tab-selectedInactiveBackground: rgba(242, 242, 242, 1);
+  --intellij-mainWindow-tab-separatorColor: rgba(209, 209, 209, 1);
+  --intellij-memoryIndicator-allocatedBackground: rgba(213, 213, 213, 1);
+  --intellij-memoryIndicator-usedBackground: rgba(176, 176, 176, 1);
+  --intellij-menu: rgba(255, 255, 255, 1);
+  --intellij-menu-acceleratorFont-family: "Lucida Grande", system-ui, sans-serif;
+  --intellij-menu-acceleratorFont-size: 14px;
+  --intellij-menu-acceleratorForeground: rgba(0, 0, 0, 1);
+  --intellij-menu-acceleratorSelectionForeground: rgba(255, 255, 255, 1);
+  --intellij-menu-background: rgba(242, 242, 242, 1);
+  --intellij-menu-borderColor: rgba(217, 217, 217, 1);
+  --intellij-menu-disabledBackground: rgba(255, 255, 255, 1);
+  --intellij-menu-disabledForeground: rgba(140, 140, 140, 1);
+  --intellij-menu-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-menu-font-size: 13px;
+  --intellij-menu-foreground: rgba(0, 0, 0, 1);
+  --intellij-menu-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-menu-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-menu-separatorColor: rgba(217, 217, 217, 1);
+  --intellij-menuBar-background: rgba(242, 242, 242, 1);
+  --intellij-menuBar-borderColor: rgba(217, 217, 217, 1);
+  --intellij-menuBar-disabledBackground: rgba(209, 209, 209, 1);
+  --intellij-menuBar-disabledForeground: rgba(140, 140, 140, 1);
+  --intellij-menuBar-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-menuBar-font-size: 13px;
+  --intellij-menuBar-foreground: rgba(0, 0, 0, 1);
+  --intellij-menuBar-highlight: rgba(255, 255, 255, 1);
+  --intellij-menuBar-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-menuBar-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-menuBar-shadow: rgba(0, 0, 0, 0.27);
+  --intellij-menuItem-acceleratorFont-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-menuItem-acceleratorFont-size: 13px;
+  --intellij-menuItem-acceleratorForeground: rgba(128, 128, 128, 1);
+  --intellij-menuItem-acceleratorSelectionForeground: rgba(255, 255, 255, 1);
+  --intellij-menuItem-background: rgba(242, 242, 242, 1);
+  --intellij-menuItem-disabledBackground: rgba(255, 255, 255, 1);
+  --intellij-menuItem-disabledForeground: rgba(140, 140, 140, 1);
+  --intellij-menuItem-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-menuItem-font-size: 13px;
+  --intellij-menuItem-foreground: rgba(0, 0, 0, 1);
+  --intellij-menuItem-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-menuItem-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-menuText: rgba(0, 0, 0, 0.85);
+  --intellij-navBar-borderColor: rgba(209, 209, 209, 1);
+  --intellij-newClass-panel-background: rgba(242, 242, 242, 1);
+  --intellij-newClass-searchField-background: rgba(255, 255, 255, 1);
+  --intellij-newUiOnboarding-dialog-background: rgba(242, 242, 242, 1);
+  --intellij-notification-background: rgba(242, 242, 242, 1);
+  --intellij-notification-borderColor: rgba(209, 209, 209, 1);
+  --intellij-notification-errorBackground: rgba(245, 230, 231, 1);
+  --intellij-notification-errorBorderColor: rgba(224, 168, 169, 1);
+  --intellij-notification-errorForeground: rgba(0, 0, 0, 1);
+  --intellij-notification-foreground: rgba(0, 0, 0, 1);
+  --intellij-notification-moreButton-background: rgba(230, 230, 230, 1);
+  --intellij-notification-moreButton-foreground: rgba(110, 110, 110, 1);
+  --intellij-notification-moreButton-innerBorderColor: rgba(217, 217, 217, 1);
+  --intellij-notification-shadow-bottom0Color: rgba(255, 255, 255, 0);
+  --intellij-notification-shadow-bottom1Color: rgba(160, 160, 160, 0.063);
+  --intellij-notification-shadow-bottomLeft0Color: rgba(255, 255, 255, 0);
+  --intellij-notification-shadow-bottomLeft1Color: rgba(160, 160, 160, 0.063);
+  --intellij-notification-shadow-bottomRight0Color: rgba(255, 255, 255, 0);
+  --intellij-notification-shadow-bottomRight1Color: rgba(160, 160, 160, 0.063);
+  --intellij-notification-shadow-left0Color: rgba(255, 255, 255, 0);
+  --intellij-notification-shadow-left1Color: rgba(160, 160, 160, 0.063);
+  --intellij-notification-shadow-right0Color: rgba(255, 255, 255, 0);
+  --intellij-notification-shadow-right1Color: rgba(160, 160, 160, 0.063);
+  --intellij-notification-shadow-top0Color: rgba(255, 255, 255, 0);
+  --intellij-notification-shadow-top1Color: rgba(160, 160, 160, 0.063);
+  --intellij-notification-shadow-topLeft0Color: rgba(255, 255, 255, 0);
+  --intellij-notification-shadow-topLeft1Color: rgba(160, 160, 160, 0.063);
+  --intellij-notification-shadow-topRight0Color: rgba(255, 255, 255, 0);
+  --intellij-notification-shadow-topRight1Color: rgba(160, 160, 160, 0.063);
+  --intellij-notification-toolWindow-errorBackground: rgba(255, 204, 204, 1);
+  --intellij-notification-toolWindow-errorBorderColor: rgba(214, 150, 150, 1);
+  --intellij-notification-toolWindow-errorForeground: rgba(0, 0, 0, 1);
+  --intellij-notification-toolWindow-informativeBackground: rgba(
+    186,
+    238,
+    186,
+    1
+  );
+  --intellij-notification-toolWindow-informativeBorderColor: rgba(
+    160,
+    191,
+    157,
+    1
+  );
+  --intellij-notification-toolWindow-informativeForeground: rgba(0, 0, 0, 1);
+  --intellij-notification-toolWindow-warningBackground: rgba(249, 247, 142, 1);
+  --intellij-notification-toolWindow-warningBorderColor: rgba(186, 184, 36, 1);
+  --intellij-notification-toolWindow-warningForeground: rgba(0, 0, 0, 1);
+  --intellij-notification-welcomeScreen-separatorColor: rgba(209, 209, 209, 1);
+  --intellij-optionPane-background: rgba(242, 242, 242, 1);
+  --intellij-optionPane-buttonFont-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-optionPane-buttonFont-size: 13px;
+  --intellij-optionPane-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-optionPane-font-size: 13px;
+  --intellij-optionPane-foreground: rgba(0, 0, 0, 1);
+  --intellij-optionPane-messageFont-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-optionPane-messageFont-size: 13px;
+  --intellij-optionPane-messageForeground: rgba(0, 0, 0, 1);
+  --intellij-packageSearch-packageTag-background: rgba(235, 235, 235, 1);
+  --intellij-packageSearch-packageTag-foreground: rgba(0, 0, 0, 1);
+  --intellij-packageSearch-packageTag-hoverBackground: rgba(201, 210, 219, 1);
+  --intellij-packageSearch-packageTag-selectedBackground: rgba(67, 149, 226, 1);
+  --intellij-packageSearch-packageTag-selectedForeground: rgba(
+    255,
+    255,
+    255,
+    1
+  );
+  --intellij-packageSearch-packageTagSelected-background: rgba(67, 149, 226, 1);
+  --intellij-packageSearch-packageTagSelected-foreground: rgba(
+    255,
+    255,
+    255,
+    1
+  );
+  --intellij-packageSearch-searchResult-background: rgba(228, 250, 255, 1);
+  --intellij-packageSearch-searchResult-hoverBackground: rgba(208, 226, 238, 1);
+  --intellij-packageSearch-searchResult-packageTag-background: rgba(
+    210,
+    230,
+    235,
+    1
+  );
+  --intellij-packageSearch-searchResult-packageTag-foreground: rgba(0, 0, 0, 1);
+  --intellij-packageSearch-searchResult-packageTag-hoverBackground: rgba(
+    191,
+    208,
+    219,
+    1
+  );
+  --intellij-packageSearch-searchResult-packageTag-selectedBackground: rgba(
+    67,
+    149,
+    226,
+    1
+  );
+  --intellij-packageSearch-searchResult-packageTag-selectedForeground: rgba(
+    255,
+    255,
+    255,
+    1
+  );
+  --intellij-panel-background: rgba(242, 242, 242, 1);
+  --intellij-panel-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-panel-font-size: 13px;
+  --intellij-panel-foreground: rgba(0, 0, 0, 1);
+  --intellij-panel-mouseShortcutBackground: rgba(245, 245, 245, 1);
+  --intellij-parameterInfo-background: rgba(247, 247, 247, 1);
+  --intellij-parameterInfo-borderColor: rgba(223, 223, 223, 1);
+  --intellij-parameterInfo-currentOverloadBackground: rgba(223, 223, 223, 1);
+  --intellij-parameterInfo-currentParameterForeground: rgba(0, 0, 0, 1);
+  --intellij-parameterInfo-disabledForeground: rgba(140, 140, 140, 1);
+  --intellij-parameterInfo-foreground: rgba(0, 0, 0, 1);
+  --intellij-parameterInfo-infoForeground: rgba(128, 128, 128, 1);
+  --intellij-parameterInfo-lineSeparatorColor: rgba(223, 223, 223, 1);
+  --intellij-passwordField-background: rgba(255, 255, 255, 1);
+  --intellij-passwordField-capsLockIconColor: rgba(0, 0, 0, 0.39);
+  --intellij-passwordField-caretForeground: rgba(0, 0, 0, 1);
+  --intellij-passwordField-font-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-passwordField-font-size: 13px;
+  --intellij-passwordField-foreground: rgba(0, 0, 0, 1);
+  --intellij-passwordField-inactiveBackground: rgba(255, 255, 255, 1);
+  --intellij-passwordField-inactiveForeground: rgba(140, 140, 140, 1);
+  --intellij-passwordField-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-passwordField-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-plugins-background: rgba(255, 255, 255, 1);
+  --intellij-plugins-borderColor: rgba(209, 209, 209, 1);
+  --intellij-plugins-button-installBackground: rgba(255, 255, 255, 1);
+  --intellij-plugins-button-installBorderColor: rgba(93, 155, 71, 1);
+  --intellij-plugins-button-installFillBackground: rgba(93, 155, 71, 1);
+  --intellij-plugins-button-installFillForeground: rgba(255, 255, 255, 1);
+  --intellij-plugins-button-installFocusedBackground: rgba(225, 246, 218, 1);
+  --intellij-plugins-button-installForeground: rgba(93, 155, 71, 1);
+  --intellij-plugins-button-updateBackground: rgba(29, 115, 191, 1);
+  --intellij-plugins-button-updateBorderColor: rgba(29, 115, 191, 1);
+  --intellij-plugins-button-updateForeground: rgba(255, 255, 255, 1);
+  --intellij-plugins-disabledForeground: rgba(140, 140, 140, 1);
+  --intellij-plugins-eapTagBackground: rgba(242, 210, 207, 1);
+  --intellij-plugins-hoverBackground: rgba(237, 246, 254, 1);
+  --intellij-plugins-lightSelectionBackground: rgba(237, 246, 254, 1);
+  --intellij-plugins-paidTagBackground: rgba(216, 237, 248, 1);
+  --intellij-plugins-searchField-background: rgba(255, 255, 255, 1);
+  --intellij-plugins-searchField-borderColor: rgba(196, 196, 196, 1);
+  --intellij-plugins-sectionHeader-background: rgba(247, 247, 247, 1);
+  --intellij-plugins-sectionHeader-foreground: rgba(128, 128, 128, 1);
+  --intellij-plugins-tagBackground: rgba(235, 235, 235, 1);
+  --intellij-plugins-tagForeground: rgba(128, 128, 128, 1);
+  --intellij-plugins-trialTagBackground: rgba(219, 232, 221, 1);
+  --intellij-popup-advertiser-background: rgba(242, 242, 242, 1);
+  --intellij-popup-advertiser-borderColor: rgba(209, 209, 209, 1);
+  --intellij-popup-advertiser-foreground: rgba(128, 128, 128, 1);
+  --intellij-popup-background: rgba(255, 255, 255, 1);
+  --intellij-popup-borderColor: rgba(171, 171, 171, 1);
+  --intellij-popup-header-activeBackground: rgba(230, 230, 230, 1);
+  --intellij-popup-header-inactiveBackground: rgba(235, 235, 235, 1);
+  --intellij-popup-inactiveBorderColor: rgba(171, 171, 171, 1);
+  --intellij-popup-separatorColor: rgba(217, 217, 217, 1);
+  --intellij-popup-separatorForeground: rgba(153, 153, 153, 1);
+  --intellij-popup-toolbar-background: rgba(247, 247, 247, 1);
+  --intellij-popup-toolbar-borderColor: rgba(247, 247, 247, 1);
+  --intellij-popupMenu-background: rgba(242, 242, 242, 1);
+  --intellij-popupMenu-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-popupMenu-font-size: 13px;
+  --intellij-popupMenu-foreground: rgba(0, 0, 0, 1);
+  --intellij-popupMenu-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-popupMenu-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-popupMenu-translucentBackground: rgba(242, 242, 242, 1);
+  --intellij-profiler-chartSlider-foreground: rgba(0, 0, 0, 1);
+  --intellij-profiler-chartSlider-lineColor: rgba(173, 173, 173, 1);
+  --intellij-profiler-cpuChart-background: rgba(98, 150, 85, 0.3);
+  --intellij-profiler-cpuChart-borderColor: rgba(98, 150, 85, 1);
+  --intellij-profiler-cpuChart-inactiveBackground: rgba(98, 150, 85, 0.2);
+  --intellij-profiler-cpuChart-inactiveBorderColor: rgba(161, 192, 153, 1);
+  --intellij-profiler-cpuChart-pointBackground: rgba(98, 150, 37, 1);
+  --intellij-profiler-cpuChart-pointBorderColor: rgba(255, 255, 255, 1);
+  --intellij-profiler-liveChart-horizontalAxisColor: rgba(81, 81, 81, 1);
+  --intellij-profiler-memoryChart-background: rgba(88, 157, 246, 0.5);
+  --intellij-profiler-memoryChart-borderColor: rgba(88, 157, 246, 1);
+  --intellij-profiler-memoryChart-inactiveBackground: rgba(88, 157, 246, 0.2);
+  --intellij-profiler-memoryChart-inactiveBorderColor: rgba(171, 206, 250, 1);
+  --intellij-profiler-memoryChart-pointBackground: rgba(88, 157, 246, 1);
+  --intellij-profiler-memoryChart-pointBorderColor: rgba(255, 255, 255, 1);
+  --intellij-profiler-timer-background: rgba(242, 242, 242, 1);
+  --intellij-profiler-timer-disabledForeground: rgba(128, 128, 128, 1);
+  --intellij-profiler-timer-foreground: rgba(0, 0, 0, 1);
+  --intellij-progressBar-background: rgba(242, 242, 242, 1);
+  --intellij-progressBar-failedColor: rgba(214, 79, 79, 1);
+  --intellij-progressBar-failedEndColor: rgba(251, 143, 137, 1);
+  --intellij-progressBar-font-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-progressBar-font-size: 13px;
+  --intellij-progressBar-foreground: rgba(0, 0, 0, 1);
+  --intellij-progressBar-indeterminateEndColor: rgba(30, 130, 230, 1);
+  --intellij-progressBar-indeterminateStartColor: rgba(145, 197, 242, 1);
+  --intellij-progressBar-passedColor: rgba(52, 177, 113, 1);
+  --intellij-progressBar-passedEndColor: rgba(126, 232, 165, 1);
+  --intellij-progressBar-progressColor: rgba(30, 130, 230, 1);
+  --intellij-progressBar-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-progressBar-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-progressBar-trackColor: rgba(196, 196, 196, 1);
+  --intellij-radioButton-background: rgba(242, 242, 242, 1);
+  --intellij-radioButton-darcula-selectionDisabledColor: rgba(140, 140, 140, 1);
+  --intellij-radioButton-darcula-selectionDisabledShadowColor: rgba(
+    0,
+    0,
+    0,
+    0.13
+  );
+  --intellij-radioButton-darcula-selectionEnabledColor: rgba(255, 255, 255, 1);
+  --intellij-radioButton-darcula-selectionEnabledShadowColor: rgba(
+    0,
+    0,
+    0,
+    0.25
+  );
+  --intellij-radioButton-darkShadow: rgba(0, 0, 0, 1);
+  --intellij-radioButton-disabledText: rgba(140, 140, 140, 1);
+  --intellij-radioButton-font-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-radioButton-font-size: 13px;
+  --intellij-radioButton-foreground: rgba(0, 0, 0, 1);
+  --intellij-radioButton-highlight: rgba(255, 255, 255, 1);
+  --intellij-radioButton-light: rgba(8, 74, 217, 1);
+  --intellij-radioButton-select: rgba(255, 102, 102, 1);
+  --intellij-radioButton-shadow: rgba(0, 0, 0, 0.27);
+  --intellij-radioButtonMenuItem-acceleratorFont-family: "Lucida Grande",
+    system-ui, sans-serif;
+  --intellij-radioButtonMenuItem-acceleratorFont-size: 14px;
+  --intellij-radioButtonMenuItem-acceleratorForeground: rgba(0, 0, 0, 1);
+  --intellij-radioButtonMenuItem-acceleratorSelectionForeground: rgba(
+    255,
+    255,
+    255,
+    1
+  );
+  --intellij-radioButtonMenuItem-background: rgba(242, 242, 242, 1);
+  --intellij-radioButtonMenuItem-disabledBackground: rgba(255, 255, 255, 1);
+  --intellij-radioButtonMenuItem-disabledForeground: rgba(140, 140, 140, 1);
+  --intellij-radioButtonMenuItem-font-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-radioButtonMenuItem-font-size: 13px;
+  --intellij-radioButtonMenuItem-foreground: rgba(0, 0, 0, 1);
+  --intellij-radioButtonMenuItem-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-radioButtonMenuItem-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-recentProject-color1-avatar-end: rgba(233, 128, 111, 1);
+  --intellij-recentProject-color1-avatar-start: rgba(224, 136, 85, 1);
+  --intellij-recentProject-color1-mainToolbarGradientStart: rgba(
+    245,
+    212,
+    193,
+    1
+  );
+  --intellij-recentProject-color2-avatar-end: rgba(187, 127, 25, 1);
+  --intellij-recentProject-color2-avatar-start: rgba(176, 139, 20, 1);
+  --intellij-recentProject-color2-mainToolbarGradientStart: rgba(
+    238,
+    226,
+    189,
+    1
+  );
+  --intellij-recentProject-color3-avatar-end: rgba(135, 170, 89, 1);
+  --intellij-recentProject-color3-avatar-start: rgba(161, 163, 89, 1);
+  --intellij-recentProject-color3-mainToolbarGradientStart: rgba(
+    219,
+    231,
+    201,
+    1
+  );
+  --intellij-recentProject-color4-avatar-end: rgba(97, 131, 236, 1);
+  --intellij-recentProject-color4-avatar-start: rgba(59, 146, 184, 1);
+  --intellij-recentProject-color4-mainToolbarGradientStart: rgba(
+    202,
+    223,
+    234,
+    1
+  );
+  --intellij-recentProject-color5-avatar-end: rgba(122, 100, 240, 1);
+  --intellij-recentProject-color5-avatar-start: rgba(53, 116, 240, 1);
+  --intellij-recentProject-color5-mainToolbarGradientStart: rgba(
+    219,
+    216,
+    239,
+    1
+  );
+  --intellij-recentProject-color6-avatar-end: rgba(169, 86, 207, 1);
+  --intellij-recentProject-color6-avatar-start: rgba(200, 77, 143, 1);
+  --intellij-recentProject-color6-mainToolbarGradientStart: rgba(
+    238,
+    215,
+    245,
+    1
+  );
+  --intellij-recentProject-color7-avatar-end: rgba(168, 77, 224, 1);
+  --intellij-recentProject-color7-avatar-start: rgba(149, 90, 224, 1);
+  --intellij-recentProject-color7-mainToolbarGradientStart: rgba(
+    223,
+    204,
+    244,
+    1
+  );
+  --intellij-recentProject-color8-avatar-end: rgba(39, 156, 205, 1);
+  --intellij-recentProject-color8-avatar-start: rgba(36, 163, 148, 1);
+  --intellij-recentProject-color8-mainToolbarGradientStart: rgba(
+    190,
+    228,
+    225,
+    1
+  );
+  --intellij-recentProject-color9-avatar-end: rgba(61, 150, 139, 1);
+  --intellij-recentProject-color9-avatar-start: rgba(95, 173, 101, 1);
+  --intellij-recentProject-color9-mainToolbarGradientStart: rgba(
+    204,
+    235,
+    209,
+    1
+  );
+  --intellij-review-branch-background: rgba(242, 242, 242, 1);
+  --intellij-review-branch-background-hover: rgba(235, 235, 235, 1);
+  --intellij-review-chatItem-hover: rgba(216, 216, 216, 0.2);
+  --intellij-review-state-background: rgba(242, 242, 242, 1);
+  --intellij-review-state-foreground: rgba(128, 128, 128, 1);
+  --intellij-review-timeline-thread-diff-anchorLine: rgba(251, 241, 209, 1);
+  --intellij-runWidget-foreground: rgba(0, 0, 0, 1);
+  --intellij-runWidget-hoverBackground: rgba(0, 0, 0, 0.098);
+  --intellij-runWidget-pressedBackground: rgba(0, 0, 0, 0.16);
+  --intellij-runWidget-runIconColor: rgba(95, 173, 101, 1);
+  --intellij-runWidget-runningBackground: rgba(89, 158, 94, 1);
+  --intellij-runWidget-stopBackground: rgba(201, 79, 79, 1);
+  --intellij-screenView-defaultBorderColor: rgba(0, 0, 0, 1);
+  --intellij-screenView-hoveredBorderColor: rgba(53, 115, 240, 1);
+  --intellij-screenView-selectedBorderColor: rgba(53, 115, 240, 1);
+  --intellij-scrollBar-background: rgba(245, 245, 245, 1);
+  --intellij-scrollBar-foreground: rgba(0, 0, 0, 1);
+  --intellij-scrollBar-hoverThumbBorderColor: rgba(89, 89, 89, 0.28);
+  --intellij-scrollBar-hoverThumbColor: rgba(115, 115, 115, 0.28);
+  --intellij-scrollBar-hoverTrackColor: rgba(128, 128, 128, 0);
+  --intellij-scrollBar-mac-hoverThumbBorderColor: rgba(0, 0, 0, 0.5);
+  --intellij-scrollBar-mac-hoverThumbColor: rgba(0, 0, 0, 0.5);
+  --intellij-scrollBar-mac-hoverTrackColor: rgba(128, 128, 128, 0);
+  --intellij-scrollBar-mac-thumbBorderColor: rgba(0, 0, 0, 0.2);
+  --intellij-scrollBar-mac-thumbColor: rgba(0, 0, 0, 0.2);
+  --intellij-scrollBar-mac-trackColor: rgba(128, 128, 128, 0);
+  --intellij-scrollBar-mac-transparent-hoverThumbBorderColor: rgba(
+    0,
+    0,
+    0,
+    0.5
+  );
+  --intellij-scrollBar-mac-transparent-hoverThumbColor: rgba(0, 0, 0, 0.5);
+  --intellij-scrollBar-mac-transparent-hoverTrackColor: rgba(
+    128,
+    128,
+    128,
+    0.1
+  );
+  --intellij-scrollBar-mac-transparent-thumbBorderColor: rgba(0, 0, 0, 0);
+  --intellij-scrollBar-mac-transparent-thumbColor: rgba(0, 0, 0, 0);
+  --intellij-scrollBar-mac-transparent-trackColor: rgba(128, 128, 128, 0);
+  --intellij-scrollBar-thumb: rgba(255, 255, 255, 1);
+  --intellij-scrollBar-thumbBorderColor: rgba(89, 89, 89, 0.2);
+  --intellij-scrollBar-thumbColor: rgba(115, 115, 115, 0.2);
+  --intellij-scrollBar-thumbDarkShadow: rgba(0, 0, 0, 1);
+  --intellij-scrollBar-thumbHighlight: rgba(255, 255, 255, 1);
+  --intellij-scrollBar-thumbShadow: rgba(0, 0, 0, 0.27);
+  --intellij-scrollBar-track: rgba(154, 154, 154, 1);
+  --intellij-scrollBar-trackColor: rgba(128, 128, 128, 0);
+  --intellij-scrollBar-trackHighlight: rgba(0, 0, 0, 1);
+  --intellij-scrollBar-transparent-hoverThumbBorderColor: rgba(
+    89,
+    89,
+    89,
+    0.28
+  );
+  --intellij-scrollBar-transparent-hoverThumbColor: rgba(115, 115, 115, 0.28);
+  --intellij-scrollBar-transparent-hoverTrackColor: rgba(128, 128, 128, 0.1);
+  --intellij-scrollBar-transparent-thumbBorderColor: rgba(89, 89, 89, 0.2);
+  --intellij-scrollBar-transparent-thumbColor: rgba(115, 115, 115, 0.2);
+  --intellij-scrollBar-transparent-trackColor: rgba(128, 128, 128, 0);
+  --intellij-scrollPane-background: rgba(242, 242, 242, 1);
+  --intellij-scrollPane-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-scrollPane-font-size: 13px;
+  --intellij-scrollPane-foreground: rgba(0, 0, 0, 1);
+  --intellij-scrollbar: rgba(154, 154, 154, 1);
+  --intellij-searchEverywhere-advertiser-background: rgba(242, 242, 242, 1);
+  --intellij-searchEverywhere-advertiser-foreground: rgba(128, 128, 128, 1);
+  --intellij-searchEverywhere-header-background: rgba(242, 242, 242, 1);
+  --intellij-searchEverywhere-list-separatorColor: rgba(217, 217, 217, 1);
+  --intellij-searchEverywhere-list-separatorForeground: rgba(153, 153, 153, 1);
+  --intellij-searchEverywhere-searchField-background: rgba(255, 255, 255, 1);
+  --intellij-searchEverywhere-searchField-borderColor: rgba(196, 196, 196, 1);
+  --intellij-searchEverywhere-searchField-infoForeground: rgba(
+    128,
+    128,
+    128,
+    1
+  );
+  --intellij-searchEverywhere-tab-selectedBackground: rgba(223, 223, 223, 1);
+  --intellij-searchEverywhere-tab-selectedForeground: rgba(0, 0, 0, 1);
+  --intellij-searchField-errorBackground: rgba(255, 204, 204, 1);
+  --intellij-searchField-errorForeground: rgba(255, 0, 0, 1);
+  --intellij-searchFieldWithExtension-background: rgba(255, 255, 255, 1);
+  --intellij-searchMatch-endBackground: rgba(255, 208, 66, 0.7);
+  --intellij-searchMatch-startBackground: rgba(255, 208, 66, 0.7);
+  --intellij-searchOption-selectedBackground: rgba(218, 228, 237, 1);
+  --intellij-segmentedButton-focusedSelectedButtonColor: rgba(218, 228, 237, 1);
+  --intellij-segmentedButton-selectedButtonColor: rgba(255, 255, 255, 1);
+  --intellij-segmentedButton-selectedEndBorderColor: rgba(196, 196, 196, 1);
+  --intellij-segmentedButton-selectedStartBorderColor: rgba(196, 196, 196, 1);
+  --intellij-separator-foreground: rgba(0, 0, 0, 1);
+  --intellij-separator-highlight: rgba(255, 255, 255, 1);
+  --intellij-separator-separatorColor: rgba(209, 209, 209, 1);
+  --intellij-separator-shadow: rgba(0, 0, 0, 0.27);
+  --intellij-settings-spotlight-borderColor: rgba(255, 200, 0, 0.39);
+  --intellij-sidePanel-background: rgba(230, 235, 240, 1);
+  --intellij-slider-background: rgba(242, 242, 242, 1);
+  --intellij-slider-buttonBorderColor: rgba(176, 176, 176, 1);
+  --intellij-slider-buttonColor: rgba(255, 255, 255, 1);
+  --intellij-slider-focus: rgba(0, 0, 0, 1);
+  --intellij-slider-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-slider-font-size: 11px;
+  --intellij-slider-foreground: rgba(0, 0, 0, 1);
+  --intellij-slider-highlight: rgba(255, 255, 255, 1);
+  --intellij-slider-shadow: rgba(0, 0, 0, 0.27);
+  --intellij-slider-tickColor: rgba(110, 110, 110, 1);
+  --intellij-slider-trackColor: rgba(196, 196, 196, 1);
+  --intellij-space-review-acceptedOutline: rgba(77, 187, 95, 1);
+  --intellij-space-review-waitForResponseOutline: rgba(140, 211, 236, 1);
+  --intellij-space-review-workingOutline: rgba(253, 120, 35, 1);
+  --intellij-speedSearch-background: rgba(255, 255, 255, 1);
+  --intellij-speedSearch-borderColor: rgba(192, 192, 192, 1);
+  --intellij-speedSearch-errorForeground: rgba(255, 0, 0, 1);
+  --intellij-speedSearch-foreground: rgba(0, 0, 0, 1);
+  --intellij-spinner-background: rgba(242, 242, 242, 1);
+  --intellij-spinner-darcula-disabledButtonColor: rgba(242, 242, 242, 1);
+  --intellij-spinner-darcula-enabledButtonColor: rgba(110, 155, 213, 1);
+  --intellij-spinner-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-spinner-font-size: 13px;
+  --intellij-spinner-foreground: rgba(0, 0, 0, 1);
+  --intellij-splitPane-background: rgba(242, 242, 242, 1);
+  --intellij-splitPane-darkShadow: rgba(0, 0, 0, 1);
+  --intellij-splitPane-highlight: rgba(242, 242, 242, 1);
+  --intellij-splitPane-shadow: rgba(0, 0, 0, 0.27);
+  --intellij-splitPaneDivider-draggingColor: rgba(64, 64, 64, 1);
+  --intellij-statusBar-background: rgba(242, 242, 242, 1);
+  --intellij-statusBar-borderColor: rgba(209, 209, 209, 1);
+  --intellij-statusBar-breadcrumbs-foreground: rgba(0, 0, 0, 1);
+  --intellij-statusBar-hoverBackground: rgba(223, 223, 223, 1);
+  --intellij-statusBar-lightEditBackground: rgba(227, 238, 252, 1);
+  --intellij-statusBar-widget-foreground: rgba(0, 0, 0, 1);
+  --intellij-tabbedPane-background: rgba(242, 242, 242, 1);
+  --intellij-tabbedPane-contentAreaColor: rgba(196, 196, 196, 1);
+  --intellij-tabbedPane-darkShadow: rgba(0, 0, 0, 1);
+  --intellij-tabbedPane-disabledForeground: rgba(140, 140, 140, 1);
+  --intellij-tabbedPane-disabledUnderlineColor: rgba(171, 171, 171, 1);
+  --intellij-tabbedPane-focus: rgba(0, 0, 0, 0.85);
+  --intellij-tabbedPane-focusColor: rgba(218, 228, 237, 1);
+  --intellij-tabbedPane-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-tabbedPane-font-size: 13px;
+  --intellij-tabbedPane-foreground: rgba(0, 0, 0, 1);
+  --intellij-tabbedPane-highlight: rgba(255, 255, 255, 1);
+  --intellij-tabbedPane-hoverColor: rgba(217, 217, 217, 1);
+  --intellij-tabbedPane-light: rgba(8, 74, 217, 1);
+  --intellij-tabbedPane-nonSelectedTabTitleNormalColor: rgba(0, 0, 0, 1);
+  --intellij-tabbedPane-selectedTabTitleDisabledColor: rgba(
+    255,
+    255,
+    255,
+    0.55
+  );
+  --intellij-tabbedPane-selectedTabTitleNormalColor: rgba(0, 0, 0, 0.85);
+  --intellij-tabbedPane-selectedTabTitlePressedColor: rgba(240, 240, 240, 1);
+  --intellij-tabbedPane-selectedTabTitleShadowDisabledColor: rgba(
+    0,
+    0,
+    0,
+    0.25
+  );
+  --intellij-tabbedPane-selectedTabTitleShadowNormalColor: rgba(0, 0, 0, 0.39);
+  --intellij-tabbedPane-shadow: rgba(0, 0, 0, 0.27);
+  --intellij-tabbedPane-smallFont-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-tabbedPane-smallFont-size: 11px;
+  --intellij-tabbedPane-underlineColor: rgba(64, 131, 201, 1);
+  --intellij-table-alternativeRowBackground: rgba(255, 255, 255, 1);
+  --intellij-table-background: rgba(255, 255, 255, 1);
+  --intellij-table-disabledForeground: rgba(140, 140, 140, 1);
+  --intellij-table-dropLineColor: rgba(0, 0, 0, 0.27);
+  --intellij-table-dropLineShortColor: rgba(0, 0, 0, 1);
+  --intellij-table-focusCellBackground: rgba(0, 0, 0, 1);
+  --intellij-table-focusCellForeground: rgba(165, 205, 255, 1);
+  --intellij-table-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-table-font-size: 13px;
+  --intellij-table-foreground: rgba(0, 0, 0, 1);
+  --intellij-table-gridColor: rgba(247, 247, 247, 1);
+  --intellij-table-hoverBackground: rgba(237, 245, 252, 1);
+  --intellij-table-hoverInactiveBackground: rgba(245, 245, 245, 1);
+  --intellij-table-lightSelectionBackground: rgba(237, 246, 254, 1);
+  --intellij-table-lightSelectionForeground: rgba(0, 0, 0, 1);
+  --intellij-table-lightSelectionInactiveBackground: rgba(245, 245, 245, 1);
+  --intellij-table-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-table-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-table-selectionInactiveBackground: rgba(213, 213, 213, 1);
+  --intellij-table-selectionInactiveForeground: rgba(0, 0, 0, 1);
+  --intellij-table-sortIconColor: rgba(0, 0, 0, 0.27);
+  --intellij-table-stripeColor: rgba(242, 245, 249, 1);
+  --intellij-tableHeader-background: rgba(255, 255, 255, 1);
+  --intellij-tableHeader-bottomSeparatorColor: rgba(217, 217, 217, 1);
+  --intellij-tableHeader-disabledForeground: rgba(140, 140, 140, 1);
+  --intellij-tableHeader-focusCellBackground: rgba(255, 255, 255, 1);
+  --intellij-tableHeader-font-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-tableHeader-font-size: 11px;
+  --intellij-tableHeader-foreground: rgba(0, 0, 0, 1);
+  --intellij-tableHeader-separatorColor: rgba(217, 217, 217, 1);
+  --intellij-tag-background: rgba(223, 223, 223, 1);
+  --intellij-text: rgba(0, 0, 0, 1);
+  --intellij-textArea-background: rgba(255, 255, 255, 1);
+  --intellij-textArea-caretForeground: rgba(0, 0, 0, 1);
+  --intellij-textArea-font-family: "Monospaced", system-ui, sans-serif;
+  --intellij-textArea-font-size: 13px;
+  --intellij-textArea-foreground: rgba(0, 0, 0, 1);
+  --intellij-textArea-inactiveBackground: rgba(255, 255, 255, 1);
+  --intellij-textArea-inactiveForeground: rgba(140, 140, 140, 1);
+  --intellij-textArea-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-textArea-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-textComponent-selectionBackgroundInactive: rgba(213, 213, 213, 1);
+  --intellij-textField-background: rgba(255, 255, 255, 1);
+  --intellij-textField-borderColor: rgba(196, 196, 196, 1);
+  --intellij-textField-caretForeground: rgba(0, 0, 0, 1);
+  --intellij-textField-darkShadow: rgba(0, 0, 0, 1);
+  --intellij-textField-disabledBackground: rgba(242, 242, 242, 1);
+  --intellij-textField-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-textField-font-size: 13px;
+  --intellij-textField-foreground: rgba(0, 0, 0, 1);
+  --intellij-textField-highlight: rgba(255, 255, 255, 1);
+  --intellij-textField-inactiveBackground: rgba(255, 255, 255, 1);
+  --intellij-textField-inactiveForeground: rgba(140, 140, 140, 1);
+  --intellij-textField-light: rgba(8, 74, 217, 1);
+  --intellij-textField-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-textField-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-textField-shadow: rgba(0, 0, 0, 0.27);
+  --intellij-textHighlight: rgba(165, 205, 255, 1);
+  --intellij-textHighlightText: rgba(0, 0, 0, 1);
+  --intellij-textInactiveText: rgba(128, 128, 128, 1);
+  --intellij-textPane-background: rgba(242, 242, 242, 1);
+  --intellij-textPane-caretForeground: rgba(0, 0, 0, 1);
+  --intellij-textPane-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-textPane-font-size: 13px;
+  --intellij-textPane-foreground: rgba(0, 0, 0, 1);
+  --intellij-textPane-inactiveBackground: rgba(255, 255, 255, 1);
+  --intellij-textPane-inactiveForeground: rgba(140, 140, 140, 1);
+  --intellij-textPane-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-textPane-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-textText: rgba(0, 0, 0, 1);
+  --intellij-tipOfTheDay-image-borderColor: rgba(209, 209, 209, 1);
+  --intellij-titlePane-background: rgba(242, 242, 242, 1);
+  --intellij-titlePane-button-hoverBackground: rgba(0, 0, 0, 0.098);
+  --intellij-titlePane-inactiveBackground: rgba(242, 242, 242, 1);
+  --intellij-titlePane-inactiveInfoForeground: rgba(153, 153, 153, 1);
+  --intellij-titlePane-infoForeground: rgba(110, 110, 110, 1);
+  --intellij-titledBorder-font-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-titledBorder-font-size: 13px;
+  --intellij-titledBorder-titleColor: rgba(0, 0, 0, 1);
+  --intellij-toggleButton-background: rgba(242, 242, 242, 1);
+  --intellij-toggleButton-borderColor: rgba(196, 196, 196, 1);
+  --intellij-toggleButton-buttonColor: rgba(196, 196, 196, 1);
+  --intellij-toggleButton-darkShadow: rgba(0, 0, 0, 1);
+  --intellij-toggleButton-disabledText: rgba(140, 140, 140, 1);
+  --intellij-toggleButton-font-family: ".AppleSystemUIFont", system-ui,
+    sans-serif;
+  --intellij-toggleButton-font-size: 13px;
+  --intellij-toggleButton-foreground: rgba(0, 0, 0, 1);
+  --intellij-toggleButton-highlight: rgba(255, 255, 255, 1);
+  --intellij-toggleButton-light: rgba(8, 74, 217, 1);
+  --intellij-toggleButton-offBackground: rgba(242, 242, 242, 1);
+  --intellij-toggleButton-offForeground: rgba(140, 140, 140, 1);
+  --intellij-toggleButton-onBackground: rgba(74, 146, 73, 1);
+  --intellij-toggleButton-onForeground: rgba(255, 255, 255, 1);
+  --intellij-toggleButton-shadow: rgba(0, 0, 0, 0.27);
+  --intellij-toolBar-background: rgba(242, 242, 242, 1);
+  --intellij-toolBar-borderHandleColor: rgba(140, 140, 140, 1);
+  --intellij-toolBar-darkShadow: rgba(0, 0, 0, 1);
+  --intellij-toolBar-dockingBackground: rgba(238, 238, 238, 1);
+  --intellij-toolBar-dockingForeground: rgba(8, 74, 217, 1);
+  --intellij-toolBar-floatingBackground: rgba(238, 238, 238, 1);
+  --intellij-toolBar-floatingForeground: rgba(64, 64, 64, 1);
+  --intellij-toolBar-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-toolBar-font-size: 13px;
+  --intellij-toolBar-foreground: rgba(0, 0, 0, 1);
+  --intellij-toolBar-highlight: rgba(255, 255, 255, 1);
+  --intellij-toolBar-light: rgba(8, 74, 217, 1);
+  --intellij-toolBar-shadow: rgba(0, 0, 0, 0.27);
+  --intellij-toolTip-actions-background: rgba(235, 235, 235, 1);
+  --intellij-toolTip-actions-infoForeground: rgba(153, 164, 173, 1);
+  --intellij-toolTip-background: rgba(247, 247, 247, 1);
+  --intellij-toolTip-borderColor: rgba(171, 171, 171, 1);
+  --intellij-toolTip-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-toolTip-font-size: 13px;
+  --intellij-toolTip-foreground: rgba(0, 0, 0, 1);
+  --intellij-toolTip-infoForeground: rgba(128, 128, 128, 1);
+  --intellij-toolTip-learning-background: rgba(247, 247, 247, 1);
+  --intellij-toolTip-learning-foreground: rgba(0, 0, 0, 1);
+  --intellij-toolTip-separatorColor: rgba(209, 209, 209, 1);
+  --intellij-toolTip-shortcutForeground: rgba(128, 128, 128, 1);
+  --intellij-toolWindow-background: rgba(255, 255, 255, 1);
+  --intellij-toolWindow-button-hoverBackground: rgba(85, 85, 85, 0.16);
+  --intellij-toolWindow-button-selectedBackground: rgba(85, 85, 85, 0.33);
+  --intellij-toolWindow-button-selectedForeground: rgba(0, 0, 0, 1);
+  --intellij-toolWindow-header-background: rgba(226, 230, 236, 1);
+  --intellij-toolWindow-header-inactiveBackground: rgba(242, 242, 242, 1);
+  --intellij-toolWindow-headerCloseButton-background: rgba(189, 189, 189, 1);
+  --intellij-toolWindow-headerTab-hoverBackground: rgba(0, 0, 0, 0.098);
+  --intellij-toolWindow-headerTab-hoverInactiveBackground: rgba(0, 0, 0, 0.098);
+  --intellij-toolWindow-headerTab-inactiveUnderlineColor: rgba(
+    156,
+    167,
+    184,
+    1
+  );
+  --intellij-toolWindow-headerTab-selectedBackground: rgba(208, 212, 216, 1);
+  --intellij-toolWindow-headerTab-selectedInactiveBackground: rgba(
+    217,
+    217,
+    217,
+    1
+  );
+  --intellij-toolWindow-headerTab-underlineColor: rgba(64, 131, 201, 1);
+  --intellij-toolWindow-headerTab-underlinedTabForeground: rgba(0, 0, 0, 1);
+  --intellij-toolWindow-headerTab-underlinedTabInactiveForeground: rgba(
+    0,
+    0,
+    0,
+    1
+  );
+  --intellij-toolbar-floating-background: rgba(235, 235, 235, 1);
+  --intellij-tooltip-actions-background: rgba(242, 242, 242, 1);
+  --intellij-tooltip-background: rgba(242, 242, 242, 1);
+  --intellij-tooltip-foreground: rgba(0, 0, 0, 1);
+  --intellij-tooltip-learning-background: rgba(16, 113, 232, 1);
+  --intellij-tooltip-learning-borderColor: rgba(16, 113, 232, 1);
+  --intellij-tooltip-learning-foreground: rgba(245, 245, 245, 1);
+  --intellij-tooltip-learning-secondaryActionForeground: rgba(108, 166, 237, 1);
+  --intellij-tooltip-learning-spanBackground: rgba(13, 92, 189, 1);
+  --intellij-tooltip-learning-spanForeground: rgba(245, 245, 245, 1);
+  --intellij-tooltip-learning-stepNumberForeground: rgba(108, 166, 237, 1);
+  --intellij-tree-background: rgba(255, 255, 255, 1);
+  --intellij-tree-dropLineColor: rgba(0, 0, 0, 0.27);
+  --intellij-tree-errorForeground: rgba(255, 0, 0, 1);
+  --intellij-tree-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-tree-font-size: 13px;
+  --intellij-tree-foreground: rgba(0, 0, 0, 1);
+  --intellij-tree-hash: rgba(230, 230, 230, 1);
+  --intellij-tree-hoverBackground: rgba(237, 245, 252, 1);
+  --intellij-tree-hoverInactiveBackground: rgba(245, 245, 245, 1);
+  --intellij-tree-line: rgba(255, 255, 255, 1);
+  --intellij-tree-modifiedItemForeground: rgba(0, 90, 217, 1);
+  --intellij-tree-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-tree-selectionBorderColor: rgba(56, 117, 214, 1);
+  --intellij-tree-selectionForeground: rgba(255, 255, 255, 1);
+  --intellij-tree-selectionInactiveBackground: rgba(213, 213, 213, 1);
+  --intellij-tree-selectionInactiveForeground: rgba(0, 0, 0, 1);
+  --intellij-tree-textBackground: rgba(255, 255, 255, 1);
+  --intellij-tree-textForeground: rgba(0, 0, 0, 1);
+  --intellij-uiDesigner-activity-borderColor: rgba(45, 47, 49, 1);
+  --intellij-uiDesigner-canvas-background: rgba(242, 242, 242, 1);
+  --intellij-uiDesigner-colorPicker-background: rgba(242, 242, 242, 1);
+  --intellij-uiDesigner-colorPicker-foreground: rgba(0, 0, 0, 1);
+  --intellij-uiDesigner-component-background: rgba(242, 242, 242, 1);
+  --intellij-uiDesigner-component-borderColor: rgba(45, 47, 49, 1);
+  --intellij-uiDesigner-component-foreground: rgba(0, 0, 0, 1);
+  --intellij-uiDesigner-component-hoverBorderColor: rgba(161, 161, 161, 1);
+  --intellij-uiDesigner-connector-borderColor: rgba(136, 136, 136, 1);
+  --intellij-uiDesigner-connector-hoverBorderColor: rgba(136, 136, 136, 1);
+  --intellij-uiDesigner-highStroke-foreground: rgba(0, 0, 0, 1);
+  --intellij-uiDesigner-label-foreground: rgba(0, 0, 0, 1);
+  --intellij-uiDesigner-list-selectionBackground: rgba(38, 117, 191, 1);
+  --intellij-uiDesigner-panel-background: rgba(242, 242, 242, 1);
+  --intellij-uiDesigner-percent-foreground: rgba(0, 0, 0, 1);
+  --intellij-uiDesigner-placeholder-background: rgba(242, 242, 242, 1);
+  --intellij-uiDesigner-placeholder-borderColor: rgba(63, 66, 68, 1);
+  --intellij-uiDesigner-placeholder-foreground: rgba(0, 0, 0, 1);
+  --intellij-uiDesigner-placeholder-selectedForeground: rgba(0, 0, 0, 1);
+  --intellij-validationTooltip-errorBackground: rgba(245, 230, 231, 1);
+  --intellij-validationTooltip-errorBorderColor: rgba(224, 168, 169, 1);
+  --intellij-validationTooltip-warningBackground: rgba(245, 240, 230, 1);
+  --intellij-validationTooltip-warningBorderColor: rgba(224, 206, 168, 1);
+  --intellij-versionControl-fileHistory-commit-selectedBranchBackground: rgba(
+    255,
+    254,
+    228,
+    1
+  );
+  --intellij-versionControl-gitCommits-graphColor: rgba(174, 185, 192, 1);
+  --intellij-versionControl-gitLog-headIconColor: rgba(255, 209, 0, 1);
+  --intellij-versionControl-gitLog-localBranchIconColor: rgba(60, 180, 92, 1);
+  --intellij-versionControl-gitLog-otherIconColor: rgba(110, 110, 110, 1);
+  --intellij-versionControl-gitLog-remoteBranchIconColor: rgba(
+    159,
+    121,
+    181,
+    1
+  );
+  --intellij-versionControl-gitLog-tagIconColor: rgba(110, 110, 110, 1);
+  --intellij-versionControl-hgLog-bookmarkIconColor: rgba(159, 121, 181, 1);
+  --intellij-versionControl-hgLog-branchIconColor: rgba(60, 180, 92, 1);
+  --intellij-versionControl-hgLog-closedBranchIconColor: rgba(130, 49, 57, 1);
+  --intellij-versionControl-hgLog-headIconColor: rgba(138, 45, 107, 1);
+  --intellij-versionControl-hgLog-localTagIconColor: rgba(0, 144, 144, 1);
+  --intellij-versionControl-hgLog-mqTagIconColor: rgba(0, 47, 144, 1);
+  --intellij-versionControl-hgLog-tagIconColor: rgba(110, 110, 110, 1);
+  --intellij-versionControl-hgLog-tipIconColor: rgba(255, 209, 0, 1);
+  --intellij-versionControl-log-commit-currentBranchBackground: rgba(
+    228,
+    250,
+    255,
+    1
+  );
+  --intellij-versionControl-log-commit-hoveredBackground: rgba(
+    195,
+    210,
+    227,
+    0.4
+  );
+  --intellij-versionControl-log-commit-reference-foreground: rgba(
+    122,
+    122,
+    122,
+    1
+  );
+  --intellij-versionControl-log-commit-unmatchedForeground: rgba(
+    128,
+    128,
+    128,
+    1
+  );
+  --intellij-versionControl-markerPopup-toolbar-background: rgba(
+    242,
+    242,
+    242,
+    1
+  );
+  --intellij-versionControl-refLabel-backgroundBase: rgba(0, 0, 0, 1);
+  --intellij-versionControl-refLabel-foreground: rgba(0, 0, 0, 1);
+  --intellij-viewport-background: rgba(242, 242, 242, 1);
+  --intellij-viewport-font-family: ".AppleSystemUIFont", system-ui, sans-serif;
+  --intellij-viewport-font-size: 13px;
+  --intellij-viewport-foreground: rgba(0, 0, 0, 1);
+  --intellij-welcomeScreen-background: rgba(247, 247, 247, 1);
+  --intellij-welcomeScreen-details-background: rgba(255, 255, 255, 1);
+  --intellij-welcomeScreen-projects-actions-background: rgba(220, 237, 254, 1);
+  --intellij-welcomeScreen-projects-actions-selectionBackground: rgba(
+    53,
+    135,
+    229,
+    1
+  );
+  --intellij-welcomeScreen-projects-actions-selectionBorderColor: rgba(
+    53,
+    116,
+    240,
+    1
+  );
+  --intellij-welcomeScreen-separatorColor: rgba(209, 209, 209, 1);
+  --intellij-welcomeScreen-sidePanel-background: rgba(242, 242, 242, 1);
+  --intellij-window: rgba(242, 242, 242, 1);
+  --intellij-windowBorder: rgba(154, 154, 154, 1);
+  --intellij-windowText: rgba(0, 0, 0, 0.85);
+}

@@ -1,0 +1,191 @@
+syntax = "proto3";
+
+package com.augmentcode.sidecar.rpc;
+
+import "tools.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/descriptor.proto";
+
+// This package contains proto version of tools classes defined in tools-local-host.ts.
+// Ultimately we'll move everything to proto buffers.
+
+// Add these options to generate Java classes
+option java_multiple_files = true;
+option java_outer_classname = "SidecarRPCTypes";
+option java_package = "com.augmentcode.sidecar.rpc";
+
+extend google.protobuf.FieldOptions {
+  string schema_description = 239001;
+  bool schema_required = 239002;
+}
+
+message JSONRPCRequest {
+  string jsonrpc = 1;
+  int32 id = 2;
+  string method = 3;
+  google.protobuf.Any params = 4;
+}
+
+// Notifications don't have an id
+message JSONRPCNotification {
+  string jsonrpc = 1;
+  string method = 2;
+  google.protobuf.Any params = 3;
+}
+
+message JSONRPCResponse {
+  string jsonrpc = 1;
+  int32 id = 2;
+  google.protobuf.Any result = 3;
+  JSONRPCErrorData error = 4;
+}
+
+message JSONRPCErrorData {
+  int32 code = 1;
+  string message = 2;
+}
+
+message InitializeParams {
+  int64 process_id = 1;
+  Capabilities capabilities = 2;
+}
+
+message Capabilities {
+  SidecarFlags featureFlags = 1;
+  SidecarInitialState initialState = 2;
+}
+
+message SidecarFlags {
+  bool enableChatWithTools = 1;
+  bool enableAgentMode = 2;
+  string agentEditTool = 3;
+  string memories_params_json = 4;
+  int32 agentEditToolMinViewSize = 5;
+  string agentEditToolSchemaType = 6;
+}
+
+message SidecarInitialState {
+  com.augmentcode.sidecar.rpc.tools.ChatMode chatMode = 1;
+  string memories_abs_path = 3;
+}
+
+message InitializeResult {
+  ServerCapabilities capabilities = 1;
+}
+
+message ServerCapabilities {
+  TextDocumentSyncKind textDocumentSync = 1;
+}
+
+enum TextDocumentSyncKind {
+  None = 0;
+  Full = 1;
+  Incremental = 2;
+}
+
+message ReadFileInputSchema {
+  string file_path = 1 [
+    (schema_description) = "The path of the file to read.",
+    (schema_required) = true
+  ];
+}
+
+message SaveFileInputSchema {
+  string file_path = 1 [
+    (schema_description) = "The path of the file to save.",
+    (schema_required) = true
+  ];
+  string file_content = 2 [
+    (schema_description) = "The content of the file to save.",
+    (schema_required) = true
+  ];
+  bool add_last_line_newline = 3 [
+    (schema_description) = "Whether to add a newline at the end of the file (default: true).",
+    (schema_required) = false
+  ];
+}
+
+message CodebaseRetrievalInputSchema {
+  string information_request = 1 [
+    (schema_description) = "A description of the information you need.",
+    (schema_required) = true
+  ];
+}
+
+message ProcessWebviewMessageRequest {
+  string message = 1;
+}
+
+message ProcessWebviewMessageResponse {
+  string message = 1;
+}
+
+message LaunchProcessInputSchema {
+  string command = 1 [
+    (schema_description) = "The shell command to execute",
+    (schema_required) = true
+  ];
+  bool wait = 2 [
+    (schema_description) = "Whether to wait for the command to complete.",
+    (schema_required) = true
+  ];
+  int64 max_wait_seconds = 3 [
+    (schema_description) = "Number of seconds to wait for the command to complete. Only relevant when wait=true. 10 minutes may be a good default: increase from there if needed.",
+    (schema_required) = true
+  ];
+  string cwd = 4 [
+    (schema_description) = "Working directory for the command. If not supplied, uses the current working directory.",
+    (schema_required) = false
+  ];
+}
+
+message KillProcessInputSchema {
+  int64 terminal_id = 1 [
+    (schema_description) = "Terminal ID to kill.",
+    (schema_required) = true
+  ];
+}
+
+message ReadProcessInputSchema {
+  int64 terminal_id = 1 [
+    (schema_description) = "Terminal ID to read from.",
+    (schema_required) = true
+  ];
+  bool wait = 2 [
+    (schema_description) = "Whether to wait for the command to complete.",
+    (schema_required) = true
+  ];
+  int64 max_wait_seconds = 3 [
+    (schema_description) = "Number of seconds to wait for the command to complete. Only relevant when wait=true. 1 minutes may be a good default: increase from there if needed.",
+    (schema_required) = true
+  ];
+}
+
+message WriteProcessInputSchema {
+  int64 terminal_id = 1 [
+    (schema_description) = "Terminal ID to write to.",
+    (schema_required) = true
+  ];
+  string input_text = 2 [
+    (schema_description) = "Text to write to the process's stdin.",
+    (schema_required) = true
+  ];
+}
+
+message ListProcessesInputSchema {}
+
+message WaitProcessInputSchema {
+  int64 terminal_id = 1 [
+    (schema_description) = "Terminal ID to wait for.",
+    (schema_required) = true
+  ];
+  int64 wait_seconds = 2 [
+    (schema_description) = "Number of seconds to wait for the process to complete.",
+    (schema_required) = true
+  ];
+}
+
+message ProgressParams {
+  string token = 1;
+  google.protobuf.Any value = 2;
+}

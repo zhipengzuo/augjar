@@ -1,0 +1,123 @@
+syntax = "proto3";
+
+package com.augmentcode.sidecar.rpc.clientInterfaces;
+
+import "chat.proto";
+import "tools.proto";
+
+// This package contains proto version of api client request/responses.
+
+// Add these options to generate Java classes
+option java_multiple_files = true;
+option java_outer_classname = "APIClientRPCTypes";
+option java_package = "com.augmentcode.sidecar.rpc.clientInterfaces";
+
+message AgentCodebaseRetrievalRequest {
+  string informationRequest = 1;
+  repeated com.augmentcode.sidecar.rpc.chat.ChatHistoryItem chatHistory = 2;
+  int32 maxOutputLength = 3;
+}
+
+message AgentCodebaseRetrievalResponse {
+  string formattedRetrieval = 1;
+}
+
+message CheckToolSafetyRequest {
+  com.augmentcode.sidecar.rpc.tools.RemoteToolId toolId = 1;
+  string toolInputJson = 2;
+}
+
+message CheckToolSafetyResponse {
+  bool isSafe = 1;
+}
+
+message LogAgentSessionEvent {
+  repeated AgentSessionEvent events = 1;
+}
+
+message AgentSessionEvent {
+  int32 event_time_sec = 1;
+  int32 event_time_nsec = 2;
+  string event_name = 3;
+  string conversation_id = 4;
+  optional EventData event_data = 5;
+}
+
+message EventData {
+  // optional AgentReversionData agent_reversion_data = 1;
+  optional AgentInterruptionData agent_interruption_data = 2;
+  optional RememberToolCallData remember_tool_call_data = 3;
+  optional MemoriesFileOpenData memories_file_open_data = 4;
+  optional InitialOrientationData initial_orientation_data = 5;
+  optional GenericTracingData classify_and_distill_data = 6;
+  optional GenericTracingData flush_memories_data = 7;
+}
+
+message RememberToolCallData {
+  int32 caller = 1;
+  bool is_complex_new_memory = 2;
+  AgentTracingData tracing_data = 3;
+}
+
+message AgentTracingData {
+  map<string, TimedBool> flags = 1;
+  map<string, TimedNumber> nums = 2;
+  map<string, TimedStringStats> string_stats = 3;
+  map<string, TimedString> request_ids = 4;
+}
+
+message TimedBool {
+  bool value = 1;
+  string timestamp = 2;
+}
+
+message TimedNumber {
+  double value = 1;
+  string timestamp = 2;
+}
+
+message TimedStringStats {
+  StringStats value = 1;
+  string timestamp = 2;
+}
+
+message TimedString {
+  string value = 1;
+  string timestamp = 2;
+}
+
+message StringStats {
+  int32 num_lines = 1;
+  int32 num_chars = 2;
+}
+
+message MemoriesFileOpenData {
+  optional bool memories_path_undefined = 1;
+}
+
+message InitialOrientationData {
+  int32 caller = 1;
+  AgentTracingData tracing_data = 2;
+}
+
+message GenericTracingData {
+  AgentTracingData tracing_data = 1;
+}
+
+message AgentInterruptionData {
+  string request_id = 1;
+  int32 curr_conversation_length = 2;
+}
+
+message LogAgentRequestEvent {
+  repeated AgentRequestEvent events = 1;
+}
+
+message AgentRequestEvent {
+  int32 event_time_sec = 1;
+  int32 event_time_nsec = 2;
+  string event_name = 3;
+  string conversation_id = 4;
+  string request_id = 5;
+  int32 chat_history_length = 6;
+}

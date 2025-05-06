@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package com.augmentcode.sidecar.rpc.clientInterfaces;
+
+// This package contains proto version of client workspace request/responses.
+
+// Add these options to generate Java classes
+option java_multiple_files = true;
+option java_outer_classname = "PluginFileStoreRPCTypes";
+option java_package = "com.augmentcode.sidecar.rpc.clientInterfaces";
+
+message SaveAsset {
+  string path = 1;
+  bytes contents = 2;
+}
+
+message LoadAsset {
+  string path = 1;
+}
+
+message LoadAssetResponse {
+  bytes contents = 1;
+}
+
+message DeleteAsset {
+  string path = 1;
+}

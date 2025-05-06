@@ -1,0 +1,1 @@
+function e(n){return n.replace(/\\/g,"/")}function t(n){return n.split("/").filter(r=>r.length>0)}function i(n){return t(n).at(-1)??""}function u(n){return t(n).slice(0,-1).join("/")}export{i as a,u as g,e as n};

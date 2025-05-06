@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package com.augmentcode.sidecar.rpc.clientInterfaces;
+
+import "client-workspaces.proto";
+
+// This package contains proto version of client actions request/responses.
+
+// Add these options to generate Java classes
+option java_multiple_files = true;
+option java_outer_classname = "ClientActionsRPCTypes";
+option java_package = "com.augmentcode.sidecar.rpc.clientInterfaces";
+
+message ShowDiffViewRequest {
+  com.augmentcode.sidecar.rpc.clientInterfaces.QualifiedPathName path = 1;
+  string original = 2;
+  string modified = 3;
+  ShowDiffViewOptions opts = 4;
+}
+
+message ShowDiffViewOptions {
+  optional bool retainFocus = 1;
+}

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package com.augmentcode.sidecar.rpc.clientInterfaces;
+
+// This package contains proto version of plugin state request/responses.
+
+import "google/protobuf/any.proto";
+
+// Add these options to generate Java classes
+option java_multiple_files = true;
+option java_outer_classname = "PluginStorageForSidecarRPCTypes";
+option java_package = "com.augmentcode.sidecar.rpc.clientInterfaces";
+
+message GetStateValueRequest {
+  string key = 1;
+  PluginStateScope scope = 2;
+}
+
+message GetStateValueResponse {
+  optional string jsonValue = 1;
+}
+
+message SetStateValueRequest {
+  string key = 1;
+  optional string jsonValue = 2;
+  PluginStateScope scope = 3;
+}
+
+enum PluginStateScope {
+  GLOBAL = 0;
+  WORKSPACE = 1;
+}

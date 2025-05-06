@@ -1,0 +1,35 @@
+
+syntax = "proto3";
+
+package com.augmentcode.rpc;
+
+// This package contains proto version of common WebView messages defined in webview-messages.ts.
+// Ultimately we'll move everything to proto buffers.
+
+option java_multiple_files = true;
+option java_package = "com.augmentcode.rpc";
+option java_outer_classname = "AugmentTypes";
+
+import "google/protobuf/any.proto";
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.MessageOptions {
+  // string value type used in JSONs coming to us
+  // see WebViewMessageType enum in webview-messages.ts
+  string webview_message_type = 239239; // A unique field number for us
+}
+
+message AsyncWrapper {
+  option (webview_message_type) = "async-wrapper";
+
+  string requestId = 1;
+  string error = 2;
+  google.protobuf.Any baseMsg = 3;
+  StreamContext streamCtx = 4;
+}
+
+message StreamContext {
+  int32 streamMsgIdx = 1;
+  string streamNextRequestId = 2;
+  bool isStreamComplete = 3;
+}

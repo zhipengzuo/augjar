@@ -1,0 +1,838 @@
+syntax = "proto3";
+
+package com.augmentcode.rpc;
+
+// This package contains proto version of chat WebView messages defined in webview-messages.ts.
+// Ultimately we'll move everything to proto buffers.
+
+// Add these options to generate Java classes
+option java_multiple_files = true;
+option java_package = "com.augmentcode.rpc";
+option java_outer_classname = "ChatTypes";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/descriptor.proto";
+import "google/protobuf/struct.proto";
+
+import "augment.proto";
+import "chat.proto";
+
+/*
+ * This service defines an abstraction of an interface that the web views can use.
+ * Web views send messages via JS objects which we parse as JSONs into the proto buffers.
+ * Until web views are not using HTTP as transport protocol, routing of the JS messages
+ * into the service calls below is managed by AugmentMessagingServiceImpl.
+ */
+service WebviewChatService {
+  rpc ChatLoaded(ChatLoadedRequest) returns (ChatInitializeResponse) {}
+  rpc ChatUserMessage(ChatUserMessageRequest) returns (stream ChatModelReply) {}
+  rpc ChatUserCancel(ChatUserCancelRequest) returns (google.protobuf.Empty) {}
+  rpc FindFolder(FindFolderRequest) returns (FindFolderResponse) {}
+  rpc FindFile(FindFileRequest) returns (FindFileResponse) {}
+  rpc ResolveFile(ResolveFileRequest) returns (ResolveFileResponse) {}
+  rpc OpenFile(OpenFileRequest) returns (google.protobuf.Empty) {}
+  rpc FindRecentlyOpenedFiles(FindRecentlyOpenedFilesRequest) returns (FindRecentlyOpenedFilesResponse) {}
+  rpc ChatSmartPaste(ChatSmartPasteRequest) returns (google.protobuf.Empty) {}
+  rpc ChatCreateFile(ChatCreateFileRequest) returns (google.protobuf.Empty) {}
+  rpc ChatFeedback(ChatRatingMessage) returns (ChatRatingDoneMessage) {}
+  rpc GetUserConfirmation(OpenConfirmationModal) returns (ConfirmationModalResponse) {}
+  rpc FindExternalSources(FindExternalSourcesRequest) returns (FindExternalSourcesResponse) {}
+  rpc FindSymbol(FindSymbolRequest) returns (FindSymbolResponse) {}
+  rpc FindSymbolRegex(FindSymbolRegexRequest) returns (FindSymbolResponse) {}
+  rpc SaveChat(SaveChatRequest) returns (SaveChatDoneResponse) {}
+  rpc GetDiagnostics(GetDiagnosticsRequest) returns (GetDiagnosticsResponse) {}
+  rpc OpenMemoriesFile(OpenMemoriesFileRequest) returns (google.protobuf.Empty) {}
+  rpc OpenSettingsPage(OpenSettingsPageRequest) returns (google.protobuf.Empty) {}
+  rpc UpdateGuidelinesState(UpdateGuidelinesStateRequest) returns (google.protobuf.Empty) {}
+  rpc ChatSaveImage(ChatSaveImageRequest) returns (ChatSaveImageResponse) {}
+  rpc ChatLoadImage(ChatLoadImageRequest) returns (ChatLoadImageResponse) {}
+  rpc ChatDeleteImage(ChatDeleteImageRequest) returns (ChatDeleteImageResponse) {}
+}
+
+message SaveChatRequest {
+  option (webview_message_type) = "save-chat";
+  SaveChatRequestData data = 1;
+}
+
+message SaveChatRequestData {
+  string conversationId = 1;
+  repeated com.augmentcode.sidecar.rpc.chat.ChatHistoryItem chatHistory = 2;
+  string title = 3;
+}
+
+message SaveChatDoneResponse {
+  option (webview_message_type) = "save-chat-done";
+  SaveChatDoneResponseData data = 1;
+}
+
+message SaveChatDoneResponseData {
+  string uuid = 1;
+  string url = 2;
+}
+
+message ChatLoadedRequest {
+  option (webview_message_type) = "chat-loaded";
+}
+
+message ChatInitializeResponse {
+  option (webview_message_type) = "chat-initialize";
+
+  ChatInitializeResponseData data = 1;
+}
+
+message ChatInitializeResponseData {
+  bool enablePreferenceCollection = 1;
+  bool enableDebugFeatures = 2;
+  bool useRichTextHistory = 3;
+  string smartPastePromptPath = 4;
+  map<string, string> modelDisplayNameToId = 5;
+  bool fullFeatured = 6;
+  bool enableFlywheel = 7;
+  bool enableExternalSourcesInChat = 8;
+  bool enableShareService = 9;
+  bool useNewThreadsMenu = 10;
+  bool enableSmartPaste = 11;
+  string smartPastePrecomputeMode = 12;
+  bool enableDesignSystemRichTextEditor = 13;
+  bool enableChatMermaidDiagrams = 14;
+  bool enableAgentMode = 15;
+  string userTier = 16; // unknown, community, professional, enterprise
+  bool enableEditableHistory = 17;
+  bool enableGuidelines = 18;
+  bool enableChatMultimodal = 19;
+}
+
+message ChatUserMessageRequest {
+  option (webview_message_type) = "chat-user-message";
+
+  ChatUserMessageData data = 1;
+}
+
+message ChatUserMessageData {
+  string text = 1;
+  repeated com.augmentcode.sidecar.rpc.chat.ChatHistoryItem chatHistory = 2;
+
+  // START:Here for backwards compatibility
+  repeated IQualifiedPathName userSpecifiedFiles = 3;
+  repeated string externalSourceIds = 4;
+  repeated com.augmentcode.sidecar.rpc.chat.ChatRequestNode nodes = 5;
+  // END: Here for backwards compatibility
+
+  optional string modelId = 6;
+  optional IChatActiveContext context = 7;
+  optional bool disableRetrieval = 8;
+  optional bool disableSelectedCodeDetails = 9;
+  optional MemoriesInfo memoriesInfo = 10;
+}
+
+message IChatActiveContext {
+  repeated IQualifiedPathName userSpecifiedFiles = 1;
+  repeated IQualifiedPathName recentFiles = 2;
+  repeated ExternalSource externalSources = 3;
+  repeated FileDetails selections = 4;
+  repeated IQualifiedPathName sourceFolders = 5;
+}
+
+
+
+message ChatRequestText {
+  string content = 1;
+}
+
+// Type of content node for tool results
+enum ChatRequestContentNodeType {
+  // Unspecified content type
+  CONTENT_TYPE_UNSPECIFIED = 0;
+
+  // Text content
+  CONTENT_TEXT = 1;
+
+  // Image content
+  CONTENT_IMAGE = 2;
+}
+
+message ChatRequestImage {
+  // Base64 encoded image data
+  string image_data = 1;
+  // Format of the image data
+  ImageFormatType format = 2;
+}
+
+enum ImageFormatType {
+  IMAGE_FORMAT_UNSPECIFIED = 0;
+  PNG = 1;
+  JPEG = 2;
+  GIF = 3;
+  WEBP = 4;
+}
+
+// Content node for tool results - can be text or image
+message ChatRequestContentNode {
+  // Type of the node
+  ChatRequestContentNodeType type = 1;
+
+  // Text content if this is a text node
+  optional string text_content = 2;
+
+  // Image content if this is an image node
+  optional ChatRequestImage image_content = 3;
+}
+
+message ChatRequestToolResult {
+  string tool_use_id = 1;
+  // Plain text content (deprecated when content_nodes is present)
+  string content = 2;
+  bool is_error = 3;
+  optional string request_id = 4;
+  // Image data if this is an image result (deprecated, use content_nodes instead)
+  optional ChatRequestImage image = 5;
+  // List of content nodes (text or images)
+  // If present, takes precedence over content and image fields
+  repeated ChatRequestContentNode content_nodes = 6;
+}
+
+message IQualifiedPathName {
+  string rootPath = 1;
+  string relPath = 2;
+}
+
+message ChatModelReply {
+  option (webview_message_type) = "chat-model-reply";
+
+  ChatModelReplyData data = 1;
+}
+
+message ChatModelReplyData {
+  string text = 1;
+  string requestId = 2;
+  bool streaming = 3;
+  repeated WorkspaceFileChunk workspaceFileChunks = 4;
+  repeated ChatResultNode nodes = 5;
+}
+
+message ChatResult {
+  string text = 1;
+  repeated WorkspaceFileChunk workspaceFileChunks = 2 [json_name = "workspace_file_chunks"];
+  repeated ChatResultNode nodes = 3;
+}
+
+message WorkspaceFileChunk {
+  int64 charStart = 1 [json_name = "char_start"];
+  int64 charEnd = 2 [json_name = "char_end"];
+  string blobName = 3 [json_name = "blob_name"];
+  FileDetails file = 4 [json_name = "file"];
+}
+
+// Matches the ChatResultNodeType from public_api.proto
+enum ChatResultNodeType {
+  RAW_RESPONSE = 0;
+  SUGGESTED_QUESTIONS = 1;
+  MAIN_TEXT_FINISHED = 2;
+  WORKSPACE_FILE_CHUNKS = 3;
+  RELEVANT_SOURCES = 4;
+  TOOL_USE = 5;
+}
+
+message ChatResultNode {
+  int32 id = 1;
+  ChatResultNodeType type = 2;
+  string content = 3;
+  optional ChatResultToolUse toolUse = 4 [json_name = "tool_use"];
+  optional ChatResultAgentMemory agentMemory = 5 [json_name = "agent_memory"];
+}
+
+message ChatResultAgentMemory {
+  string content = 1;
+}
+
+message ChatResultToolUse {
+  string toolUseId = 1 [json_name = "tool_use_id"];
+  string toolName = 2 [json_name = "tool_name"];
+  string inputJson = 3 [json_name = "input_json"];
+  string mcpServerName = 4 [json_name = "mcp_server_name"];
+  string mcpToolName = 5 [json_name = "mcp_tool_name"];
+}
+
+message ChatUserCancelRequest {
+  option (webview_message_type) = "chat-user-cancel";
+
+  ChatUserCancelData data = 1;
+}
+
+message ChatUserCancelData {
+  string requestId = 1;
+}
+
+message SourceFoldersUpdated {
+  option (webview_message_type) = "source-folders-updated";
+  SourceFoldersUpdatedData data = 1;
+}
+
+message SourceFoldersUpdatedData {
+  repeated ISourceFolderInfo sourceFolders = 1;
+}
+
+message ISourceFolderInfo {
+  string folderRoot = 1;
+}
+
+message FileRangesSelected {
+  option (webview_message_type) = "file-ranges-selected";
+  repeated FileDetails data = 1;
+}
+
+message CurrentlyOpenFiles {
+  option (webview_message_type) = "currently-open-files";
+  repeated FileDetails data = 1;
+}
+
+message FileDetails {
+  string repoRoot = 1;
+  string pathName = 2;
+  optional Range range = 3;
+  optional FullRange fullRange = 4;
+  optional string originalCode = 5;
+  optional string modifiedCode = 6;
+  optional LineChanges lineChanges = 7;
+  optional bool differentTab = 8;
+  optional string requestId = 9;
+  optional string suggestionId = 10;
+  optional string snippet = 11;
+}
+
+message Range {
+  int32 start = 1;
+  int32 stop = 2;
+}
+
+message FullRange {
+  int32 startLineNumber = 1;
+  int32 startColumn = 2;
+  int32 endLineNumber = 3;
+  int32 endColumn = 4;
+}
+
+message LineChanges {
+  repeated LineChange changes = 1;
+  int32 lineOffset = 2;
+}
+
+message LineChange {
+  int32 originalStart = 1;
+  int32 originalEnd = 2;
+  int32 modifiedStart = 3;
+  int32 modifiedEnd = 4;
+}
+
+message FindFileRequest {
+  option (webview_message_type) = "find-file-request";
+  FindFileRequestData data = 1;
+}
+
+message FindFileRequestData {
+  string rootPath = 1;
+  string relPath = 2;
+  bool exactMatch = 3;
+  int32 maxResults = 4;
+}
+
+message ResolveFileRequest {
+  option (webview_message_type) = "resolve-file-request";
+  FindFileRequestData data = 1;
+}
+
+message ResolveFileResponse {
+  option (webview_message_type) = "resolve-file-response";
+  FileDetails data = 1;
+}
+
+message FindFileResponse {
+  option (webview_message_type) = "find-file-response";
+  repeated FileDetails data = 1;
+}
+
+message SourceFoldersSyncStatus {
+  option (webview_message_type) = "source-folders-sync-status";
+  SyncingStatusEvent data = 1;
+}
+
+message SyncingStatusEvent {
+  SyncingStatus status = 1;
+  repeated SourceFolderSyncingProgress foldersProgress = 2;
+}
+
+message SourceFolderSyncingProgress {
+  string folderRoot = 1;
+  SyncingProgress progress = 2;
+}
+
+message SyncingProgress {
+  bool newlyTracked = 1;
+  int32 trackedFiles = 2;
+  int32 backlogSize = 3;
+}
+
+enum SyncingStatus {
+  longRunning = 0;
+  running = 1;
+  done = 2;
+}
+
+message OpenFileRequest {
+  option (webview_message_type) = "open-file";
+
+  FileDetails data = 1;
+}
+
+message ChatCreateFileRequest {
+  option (webview_message_type) = "chat-create-file";
+
+  ChatCreateFileRequestData data = 1;
+}
+
+message ChatCreateFileRequestData {
+  string code = 1;
+  string relPath = 2; // When relPath is not present, create a new file with no name
+}
+
+enum FeedbackRating {
+  unset = 0;
+  positive = 1;
+  negative = 2;
+}
+
+enum ChatMode {
+  CHAT = 0;
+  AGENT = 1;
+}
+
+message ChatFeedback {
+  string requestId = 1;
+  FeedbackRating rating = 2;
+  string note = 3;
+  ChatMode mode = 4;
+}
+
+message ChatRatingMessage {
+  option (webview_message_type) = "chat-rating";
+  ChatFeedback data = 1;
+}
+
+message ChatRatingDoneMessage {
+  option (webview_message_type) = "chat-rating-done";
+  ChatFeedback data = 1;
+}
+
+enum WebviewName {
+  chat = 0;
+}
+
+message ReportWebviewClientMetricRequest {
+  option (webview_message_type) = "report-webview-client-metric";
+  string clientMetric = 1;
+  int64 value = 2;
+  WebviewName webviewName = 3;
+}
+
+message OpenConfirmationModal {
+  option (webview_message_type) = "open-confirmation-modal";
+  OpenConfirmationModalData data = 1;
+}
+
+message OpenConfirmationModalData {
+  string title = 1;
+  string message = 2;
+  string confirmButtonText = 3;
+  string cancelButtonText = 4;
+}
+
+message ConfirmationModalResponse {
+  option (webview_message_type) = "confirmation-modal-response";
+  ConfirmationModalResponseData data = 1;
+}
+
+message ConfirmationModalResponseData {
+  bool ok = 1;
+  string error = 2;
+}
+
+message SearchExternalSourcesRequest {
+  string query = 1;
+  repeated string source_types = 2;
+}
+
+message SearchExternalSourcesResponse {
+  repeated ExternalSource sources = 1;
+}
+
+message FindExternalSourcesRequest {
+  option (webview_message_type) = "find-external-sources-request";
+  SearchExternalSourcesRequest data = 1;
+}
+
+message FindExternalSourcesResponse {
+  option (webview_message_type) = "find-external-sources-response";
+  SearchExternalSourcesResponse data = 1;
+}
+
+message ExternalSource {
+  string id = 3;
+  string name = 1;
+  string title = 2;
+  string source_type = 4;
+}
+
+message FindSymbolRequest {
+  option (webview_message_type) = "find-symbol-request";
+  FindSymbolRequestData data = 1;
+}
+
+message FindSymbolRequestData {
+  string query = 1;
+  ISearchScopeArgs searchScope = 2;
+}
+
+message ISearchScopeArgs {
+  repeated FileDetails files = 1;
+}
+
+message FindSymbolRegexRequest {
+  option (webview_message_type) = "find-symbol-regex-request";
+  FindSymbolRequestData data = 1;
+}
+
+message FindSymbolResponseData {
+  FileDetails file = 1;
+
+}
+
+message FindSymbolResponse {
+  option (webview_message_type) = "find-symbol-response";
+  repeated FindSymbolResponseData data = 1;
+}
+
+message FindFolderRequest {
+  option (webview_message_type) = "find-folder-request";
+  FindFolderRequestData data = 1;
+}
+
+message FindFolderRequestData {
+  string rootPath = 1;
+  string relPath = 2;
+  bool exactMatch = 3;
+  int32 maxResults = 4;
+}
+
+message FindFolderResponse {
+  option (webview_message_type) = "find-folder-response";
+  repeated FileDetails data = 1;
+}
+
+message FindRecentlyOpenedFilesRequest {
+  option (webview_message_type) = "find-recently-opened-files";
+  FindFileRequestData data = 1;
+}
+
+message FindRecentlyOpenedFilesResponse {
+  option (webview_message_type) = "find-recently-opened-files-response";
+  repeated FileDetails data = 1;
+}
+
+message MainPanelLoaded {
+  option (webview_message_type) = "main-panel-loaded";
+}
+
+message MainPanelDisplayApp {
+  option (webview_message_type) = "main-panel-display-app";
+  string data = 1;
+}
+
+message MainPanelActions {
+  option (webview_message_type) = "main-panel-actions";
+  repeated string data = 1;
+}
+
+message MainPanelPerformAction {
+  option (webview_message_type) = "main-panel-perform-action";
+  string data = 1;
+}
+
+message ChatSmartPasteRequest {
+  option (webview_message_type) = "chat-smart-paste";
+  ChatSmartPasteData data = 1;
+}
+
+message ChatSmartPasteData {
+  string generatedCode = 1;
+  repeated com.augmentcode.sidecar.rpc.chat.ChatHistoryItem chatHistory = 2;
+  string targetFile = 4;
+  ChatSmartPasteOptions options = 3;
+}
+
+message ChatSmartPasteOptions {
+  bool dryRun = 1;
+  bool preload = 2;
+  bool requireFileConfirmation = 3;
+}
+
+message UsedChat {
+  option (webview_message_type) = "used-chat";
+}
+
+message UsedSlashAction {
+  option (webview_message_type) = "used-slash-action";
+}
+
+message ShouldShowSummary {
+  option (webview_message_type) = "should-show-summary";
+}
+
+message GetDiagnosticsRequest {
+  option (webview_message_type) = "get-diagnostics-request";
+}
+
+message GetDiagnosticsResponse {
+  option (webview_message_type) = "get-diagnostics-response";
+  repeated Diagnostic data = 1;
+}
+
+message Diagnostic {
+  DiagnosticFileLocation location = 1;
+  string message = 2;
+  DiagnosticSeverity severity = 3;
+  string current_blob_name = 4;
+}
+
+message DiagnosticFileLocation {
+  string path = 1;
+  int32 line_start = 2;
+  int32 line_end = 3;
+}
+
+enum DiagnosticSeverity {
+  ERROR = 0;
+  WARNING = 1;
+  INFORMATION = 2;
+  HINT = 3;
+}
+
+message ChatInstructionStreamResult {
+  string text = 1 [json_name = "text"];
+  repeated string unknownBlobNames = 2 [json_name = "unknown_blob_names"];
+  bool checkpointNotFound = 3 [json_name = "checkpoint_not_found"];
+  string replacementText = 4 [json_name = "replacement_text"];
+  string replacementOldText = 5 [json_name = "replacement_old_text"];
+  int32 replacementStartLine = 6 [json_name = "replacement_start_line"];
+  int32 replacementEndLine = 7 [json_name = "replacement_end_line"];
+  int32 replacementSequenceId = 8 [json_name = "replacement_sequence_id"];
+}
+
+message ToolCheckSafeWebViewRequest {
+  option (webview_message_type) = "check-safe";
+  ToolCheckSafeData data = 1;
+}
+
+message ToolCheckSafeData {
+  string name = 1;
+  google.protobuf.Struct input = 2;
+}
+
+message ToolCheckSafeWebViewResponse {
+  option (webview_message_type) = "check-safe-response";
+  ToolCheckSafeResponseData data = 1;
+}
+
+message ToolCheckSafeResponseData {
+  bool isSafe = 1;
+}
+
+message ToolCallWebViewRequest {
+  option (webview_message_type) = "call-tool";
+  ToolCallRequestData data = 1;
+}
+
+message ToolCallRequestData {
+  string requestId = 1;
+  string toolUseId = 2;
+  string name = 3;
+  google.protobuf.Struct input = 4;
+  repeated com.augmentcode.sidecar.rpc.chat.ChatHistoryItem chatHistory = 5;
+  string conversationId = 6;
+}
+
+message ToolCallWebViewResponse {
+  option (webview_message_type) = "call-tool-response";
+  ToolCallWebViewResponseData data = 1;
+}
+
+message ToolCallWebViewResponseData {
+  string text = 1;
+  bool isError = 2;
+  optional string requestId = 3;
+}
+
+message ToolCancelRunWebViewRequest {
+  option (webview_message_type) = "cancel-tool-run";
+  ToolCancelRunData data = 1;
+}
+
+message ToolCancelRunData {
+  string requestId = 1;
+  string toolUseId = 2;
+}
+
+message ToolCancelRunWebViewResponse {
+  option (webview_message_type) = "cancel-tool-run-response";
+}
+
+message CheckToolExistsRequest {
+  option (webview_message_type) = "checkToolExists";
+  string toolName = 1;
+}
+
+message CheckToolExistsResponse {
+  option (webview_message_type) = "checkToolExistsResponse";
+  bool exists = 1;
+
+}
+
+message ChatModeChangedWebViewRequest {
+  option (webview_message_type) = "chat-mode-changed";
+  ChatModeChangedData data = 1;
+}
+
+message ChatModeChangedData {
+  string mode = 1;
+}
+
+message CheckAgentAutoModeApprovalRequest {
+  option (webview_message_type) = "check-agent-auto-mode-approval";
+}
+
+message CheckAgentAutoModeApprovalResponse {
+  option (webview_message_type) = "check-agent-auto-mode-approval-response";
+  bool data = 2;
+}
+
+message SetAgentAutoModeApprovedRequest {
+  option (webview_message_type) = "set-agent-auto-mode-approved";
+  bool data = 1;
+}
+
+message GetIDEStateNodeRequest {
+  option (webview_message_type) = "get-ide-state-node-request";
+}
+
+message GetIDEStateNodeResponse {
+  option (webview_message_type) = "get-ide-state-node-response";
+  com.augmentcode.sidecar.rpc.chat.ChatRequestIdeState data = 1;
+}
+
+message OpenMemoriesFileRequest {
+  option (webview_message_type) = "open-memories-file";
+}
+
+message GetWorkspaceInfoRequest {
+  option (webview_message_type) = "get-workspace-info-request";
+}
+
+message GetWorkspaceInfoResponse {
+  option (webview_message_type) = "get-workspace-info-response";
+  GetWorkspaceInfoResponseData data = 1;
+}
+
+message GetWorkspaceInfoResponseData {
+  repeated int32 trackedFileCount = 1;
+}
+
+// Guidelines related messages
+
+message  UserGuidelinesState {
+  bool enabled = 1;
+  bool overLimit = 2;
+  string contents = 3;
+}
+
+message WorkspaceGuidelinesState {
+  bool enabled = 1;
+  bool overLimit = 2;
+  string workspaceFolder = 3;
+  int32 lengthLimit = 4;
+}
+
+message GuidelinesStates {
+  UserGuidelinesState userGuidelines = 1;
+  repeated WorkspaceGuidelinesState workspaceGuidelines = 2;
+}
+
+message UpdateGuidelinesStateRequest {
+  option (webview_message_type) = "update-guidelines-state";
+  GuidelinesStates data = 1;
+}
+
+message OpenSettingsPageRequest {
+  option (webview_message_type) = "open-settings-page";
+  string data = 1;
+}
+
+
+// End of Guidelines related messages
+
+// Image related messages for multimodal chat
+message FileData {
+  string filename = 1;
+  bytes data = 2;
+}
+
+message ChatSaveImageRequest {
+  option (webview_message_type) = "chat-save-image-request";
+  FileData data = 1;
+}
+
+message ChatSaveImageResponse {
+  option (webview_message_type) = "chat-save-image-response";
+  string data = 1;
+}
+
+message ChatLoadImageRequest {
+  option (webview_message_type) = "chat-load-image-request";
+  string data = 1;
+}
+
+message ChatLoadImageResponse {
+  option (webview_message_type) = "chat-load-image-response";
+  bytes data = 1;
+}
+
+message ChatDeleteImageRequest {
+  option (webview_message_type) = "chat-delete-image-request";
+  string data = 1;
+}
+
+message ChatDeleteImageResponse {
+  option (webview_message_type) = "chat-delete-image-response";
+}
+// End of Image related messages
+
+message SignInLoaded {
+  option (webview_message_type) = "sign-in-loaded";
+}
+
+message SignInLoadedResponse {
+  option (webview_message_type) = "sign-in-loaded-response";
+  SignInLoadedResponseData data = 1;
+}
+
+message SignInLoadedResponseData {
+  string client = 1;
+}
+
+message AugmentLinkMessage {
+  option (webview_message_type) = "augment-link";
+  string data = 1;
+}
+
+message MemoriesInfo {
+  bool isClassifyAndDistill = 1;
+  bool isDistill = 2;
+}

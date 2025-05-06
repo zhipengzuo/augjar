@@ -1,0 +1,152 @@
+syntax = "proto3";
+
+package com.augmentcode.sidecar.rpc.chat;
+
+// Add these options to generate Java classes
+option java_multiple_files = true;
+option java_outer_classname = "ChatRPCTypes";
+option java_package = "com.augmentcode.sidecar.rpc.chat";
+
+message ChatHistoryItem {
+  string request_message = 1;
+  string response_text = 2;
+  string request_id = 3;
+  repeated ChatRequestNode request_nodes = 4;
+  repeated ChatResultNode response_nodes = 5;
+}
+
+// We don't want to actually use this enum in the ChatRequestNode type,
+// because we need that field to serialize as an int32.
+// But we use this on the plugin side to make it easier to match up
+// the int32 values with the enum names.
+enum ChatRequestNodeType {
+  TEXT = 0;
+  TOOL_RESULT = 1;
+  IMAGE = 2;
+  IMAGE_ID = 3;
+  IDE_STATE = 4;
+  EDIT_EVENTS = 5;
+  CHECKPOINT_REF = 6;
+}
+
+message ChatRequestNode {
+  int32 id = 1;
+  int32 type = 2;
+  optional ChatRequestText text_node = 3;
+  optional ChatRequestToolResult tool_result_node = 4;
+  optional ChatRequestImage image_node = 5;
+  optional ChatRequestImageId image_id_node = 6;
+  optional ChatRequestIdeState ide_state_node = 7;
+}
+
+message ChatRequestIdeState {
+  repeated WorkspaceFolderInfo workspace_folders = 1;
+  bool workspace_folders_unchanged = 2;
+  optional TerminalInfo current_terminal = 3;
+}
+
+message WorkspaceFolderInfo {
+  string repository_root = 1;
+  string folder_root = 2;
+}
+
+message TerminalInfo {
+  int32 terminal_id = 1;
+  string current_working_directory = 2;
+}
+
+message ChatRequestImage {
+  // Base64 encoded image data
+  string image_data = 1 [debug_redact = true];
+  ImageFormatType format = 2;
+}
+
+message ChatRequestImageId {
+  // The image ID in the asset manager
+  string image_id = 1;
+  ImageFormatType format = 2;
+}
+
+enum ImageFormatType {
+  IMAGE_FORMAT_UNSPECIFIED = 0;
+  PNG = 1;
+  JPEG = 2;
+  GIF = 3;
+  WEBP = 4;
+}
+
+message ChatRequestText {
+  string content = 1;
+}
+
+// Type of content node for tool results
+enum ChatRequestContentNodeType {
+  CONTENT_TYPE_UNSPECIFIED = 0;
+  // Text content
+  CONTENT_TEXT = 1;
+  // Image content
+  CONTENT_IMAGE = 2;
+}
+
+// Content node for tool results - can be text or image
+message ChatRequestContentNode {
+  // Type of the node
+  ChatRequestContentNodeType type = 1;
+
+  // Text content if this is a text node
+  optional string text_content = 2;
+
+  // Image content if this is an image node
+  optional ChatRequestImage image_content = 3;
+}
+
+message ChatRequestToolResult {
+  string tool_use_id = 1;
+  // Plain text content (deprecated when content_nodes is present)
+  string content = 2;
+  bool is_error = 3;
+  optional string request_id = 4;
+  // Image data if this is an image result (deprecated, use content_nodes instead)
+  optional ChatRequestImage image = 5;
+  // List of content nodes (text or images)
+  // If present, takes precedence over content and image fields
+  repeated ChatRequestContentNode content_nodes = 6;
+}
+
+// Matches the ChatResultNodeType from public_api.proto
+enum ChatResultNodeType {
+  RAW_RESPONSE = 0;
+  SUGGESTED_QUESTIONS = 1;
+  MAIN_TEXT_FINISHED = 2;
+  WORKSPACE_FILE_CHUNKS = 3;
+  RELEVANT_SOURCES = 4;
+  TOOL_USE = 5;
+}
+
+message ChatResultNode {
+  int32 id = 1;
+  ChatResultNodeType type = 2;
+  string content = 3;
+  optional ChatResultToolUse toolUse = 4 [json_name = "tool_use"];
+  optional ChatResultAgentMemory agentMemory = 5 [json_name = "agent_memory"];
+}
+
+message ChatResultToolUse {
+  string toolUseId = 1 [json_name = "tool_use_id"];
+  string toolName = 2 [json_name = "tool_name"];
+  string inputJson = 3 [json_name = "input_json"];
+  string mcpServerName = 4 [json_name = "mcp_server_name"];
+  string mcpToolName = 5 [json_name = "mcp_tool_name"];
+}
+
+message ChatResultAgentMemory {
+  string content = 1;
+}
+
+message ChatStreamRequest {
+  string progressToken = 1;
+  string requestPayloadJson = 2;
+}
+message ChatStreamResponse {
+  string responsePayloadJson = 1;
+}

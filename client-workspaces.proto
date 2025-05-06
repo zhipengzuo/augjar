@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package com.augmentcode.sidecar.rpc.clientInterfaces;
+
+// This package contains proto version of client workspace request/responses.
+
+// Add these options to generate Java classes
+option java_multiple_files = true;
+option java_outer_classname = "ClientWorkspacesRPCTypes";
+option java_package = "com.augmentcode.sidecar.rpc.clientInterfaces";
+
+message GetCWDResponse {
+  string cwd = 1;
+}
+
+message ReadFileRequest {
+  string filePath = 1;
+}
+
+message ReadFileResponse {
+  string contents = 1;
+  QualifiedPathName filepath = 2;
+}
+
+message QualifiedPathName {
+  string rootPath = 1;
+  string relPath = 2;
+}
+
+message WriteFileRequest {
+  QualifiedPathName filePath = 1;
+  string contents = 2;
+}
+
+message DeleteFileRequest {
+  QualifiedPathName filePath = 1;
+}

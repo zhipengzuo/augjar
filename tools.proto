@@ -1,0 +1,194 @@
+syntax = "proto3";
+
+package com.augmentcode.sidecar.rpc.tools;
+
+import "chat.proto";
+// This package contains proto definitions for messages
+// used by the tools methods from the sidecar.
+import "google/protobuf/struct.proto";
+
+// Add these options to generate Java classes
+option java_multiple_files = true;
+option java_outer_classname = "ToolsRPCTypes";
+option java_package = "com.augmentcode.sidecar.rpc.tools";
+
+message ToolsStateResponse {
+  ChatMode mode = 1;
+  repeated ToolDefinition tools = 2;
+}
+
+message ToolDefinition {
+  string name = 1;
+  string description = 2;
+  string input_schema_json = 3;
+  ToolSafety tool_safety = 4;
+  string mcp_server_name = 5; // MCP server name for MCP tools
+  string mcp_tool_name = 6; // Original MCP tool name without server suffix
+}
+
+enum ToolSafety {
+  UNSAFE = 0;
+  SAFE = 1;
+  CHECK = 2;
+}
+
+message ToolCallRequest {
+  string requestId = 1;
+  string toolUseId = 2;
+  string name = 3;
+  google.protobuf.Struct input = 4;
+  repeated com.augmentcode.sidecar.rpc.chat.ChatHistoryItem history = 5;
+  string conversationId = 6;
+}
+
+message ToolCallResponse {
+  // Plain text content (deprecated when content_nodes is present)
+  string text = 1;
+  bool isError = 2;
+  // List of content nodes (text or images)
+  repeated com.augmentcode.sidecar.rpc.chat.ChatRequestContentNode content_nodes = 3;
+}
+
+message ToolCheckSafeRequest {
+  string name = 1;
+  google.protobuf.Struct input = 2;
+}
+
+message ToolCheckSafeResponse {
+  bool isSafe = 1;
+}
+
+message ToolCancelRunRequest {
+  string requestId = 1;
+  string toolUseId = 2;
+}
+
+message RetrieveRemoteToolsRequest {
+  repeated RemoteToolId supportedTools = 1;
+}
+
+message RetrieveRemoteToolsResponse {
+  repeated RemoteToolDefinition tools = 1;
+}
+
+message RemoteToolDefinition {
+  ToolDefinition toolDefinition = 1;
+  RemoteToolId remoteToolId = 2;
+  ToolAvailabilityStatus availabilityStatus = 3;
+  ToolSafety toolSafety = 4;
+  string oauthUrl = 5;
+}
+
+enum RemoteToolId {
+  Unknown = 0;
+
+  // Google search
+  WebSearch = 1;
+
+  // Jira tools (DEPRECATED)
+  // JiraSearch = 2 [deprecated = true];
+  // JiraIssue = 3 [deprecated = true];
+  // JiraProject = 4 [deprecated = true];
+  reserved 2 to 4;
+
+  // Notion tools (DEPRECATED)
+  // NotionSearch = 5 [deprecated = true];
+  // NotionPage = 6 [deprecated = true];
+  reserved 5 to 6;
+
+  // Linear tools (DEPRECATED)
+  reserved 7; // LinearSearchIssues = 7 [deprecated = true];
+
+  // GitHub tools
+  GitHubApi = 8;
+
+  // Confluence tools (DEPRECATED)
+  // ConfluenceSearch = 9 [deprecated = true];
+  // ConfluenceContent = 10 [deprecated = true];
+  // ConfluenceSpace = 11 [deprecated = true];
+  reserved 9 to 11;
+
+  // New integration tools
+  Linear = 12;
+  Jira = 13;
+  Confluence = 14;
+  Notion = 15;
+  Supabase = 16;
+  Glean = 17;
+}
+
+enum ToolAvailabilityStatus {
+  UnknownStatus = 0;
+  Available = 1;
+  UserConfigRequired = 2;
+}
+
+message CallRemoteToolRequest {
+  string name = 1;
+  string input = 2;
+  RemoteToolId toolId = 3;
+  // Use this request ID for the API call
+  string request_id = 4;
+}
+
+message CallRemoteToolResponse {
+  string tool_output = 1;
+  string tool_result_message = 2;
+
+  // Ideally this would use the RemoteToolResponseStatus, but that requires
+  // sharing protos with sidecar/libs, which will break either bazel build
+  // or intellij build since they use different path roots for imports.
+  int32 status = 3;
+}
+
+message ChangeChatModeRequest {
+  ChatMode mode = 1;
+}
+
+enum ChatMode {
+  CHAT = 0;
+  AGENT = 1;
+}
+
+message FilterToolsWithExtraInputRequest {
+  repeated RemoteToolId tool_ids = 1;
+}
+
+message FilterToolsWithExtraInputResponse {
+  repeated RemoteToolId tool_ids = 1;
+}
+
+message GetToolStatusForSettingsPanelRequest {
+  bool use_cache = 1;
+}
+
+message GetToolStatusForSettingsPanelResponse {
+  repeated ToolDefinitionWithSettings tools = 1;
+}
+
+message ToolIdentifier {
+  string host_name = 1;
+  string tool_id = 2; // NOTE: we coerce this to a string for protobuf (can be int/enum in the TS code)
+}
+
+message ToolDefinitionWithSettings {
+  ToolDefinition definition = 1;
+  ToolIdentifier identifier = 2;
+  bool is_configured = 3;
+  bool enabled = 4;
+  ToolSafety tool_safety = 5;
+  optional string oauth_url = 6;
+}
+
+message McpServerConfig {
+  string command = 1;
+  repeated string args = 2;
+  int32 timeout_ms = 3;
+  map<string, string> env = 4;
+  bool use_shell_interpolation = 5;
+  string name = 6; // User-defined name for the MCP server, used for namespacing
+}
+
+message SetMcpServersRequest {
+  repeated McpServerConfig mcp_servers = 1;
+}
